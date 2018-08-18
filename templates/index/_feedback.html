@@ -1,0 +1,33 @@
+<form class="b-feedback">
+    <div class="b-feedback__input-text">
+        <input type="text" id="name" required>
+        <label for="name">Ваше имя</label>
+    </div>
+    <div class="b-feedback__input-email">
+        <input type="email" id="email" required>
+        <label for="email">Почта</label>
+    </div>
+    <div class="b-feedback__textarea">
+        <textarea name="message" id="message" required></textarea>
+        <label for="message">Текст сообщения</label>
+    </div>
+    <div class="b-feedback__input-checkbox">
+        <input id="personal-data" type="checkbox" required>
+        <label for="personal-data">
+            <span class="b-feedback__input-custom-checkbox"></span>
+            Я согласен на обработку моих персональных данных в соответствии с
+            <a href="#">Политикой конфиденциальности компании</a>
+        </label>
+    </div>
+    <div class="b-feedback__input-radio">
+        <input type="radio" id="sms" name="contacts" value="sms">
+        <label for="sms"><span class="b-feedback__input-custom-checkbox"></span>sms</label>
+    </div>
+    <div class="b-feedback__input-radio">
+        <input type="radio" id="mms" name="contacts" value="mms">
+        <label for="mms"><span class="b-feedback__input-custom-checkbox"></span>mms</label>
+    </div>
+    <div class="b-feedback__input-submit">
+        <input type="submit" value="получить консультацию">
+    </div>
+</form>

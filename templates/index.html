@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% set page = 'b-main-page' %}
+{% set pageName = 'templates' %}
+{% set logoUrl = 'images/logo-header.png' %}
+{% set breadcrumbs = [{'name':'Главная','url':'index'}] %}
+{% set navActiveItem = 0 %}
+
+
+{% block content %}
+
+<h1>h1</h1>
+<div class="box">box</div>
+<div class="b-row">
+    <div class="b-col">1</div>
+    <div class="b-col">2</div>
+</div>
+
+<h2>feedback</h2>
+<div class="b-feedback-wrap">
+    <div class="b-feedback__title">заголовок</div>
+    <div class="b-feedback__sub-title">подзаголовок</div>
+    <div class="b-feedback__description"><p>описание</p></div>
+    {% include 'index/_feedback.html' %}
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nibh velit, lacinia sit amet quam eget, fermentum iaculis purus. Phasellus in turpis blandit, lacinia ex ac, viverra eros. Proin aliquam vel tortor et feugiat. Mauris ac neque nibh. Praesent dapibus dolor nibh, sit amet maximus mauris rutrum a. Ut in magna ex. Nunc tempus sed orci quis aliquam. Sed consectetur sagittis porttitor. Nam efficitur dapibus massa. Etiam odio enim, sollicitudin sed enim mollis, maximus ultrices lacus. Donec tristique posuere augue, vel suscipit risus porttitor vel. Duis pretium cursus nunc ut aliquet. Sed nibh augue, aliquam vitae mi in, pellentesque volutpat turpis. Aenean molestie nec massa et fringilla. Aenean ultrices lorem eget mauris pretium cursus sit amet et lacus. Integer vel vestibulum sem.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nibh velit, lacinia sit amet quam eget, fermentum iaculis purus. Phasellus in turpis blandit, lacinia ex ac, viverra eros. Proin aliquam vel tortor et feugiat. Mauris ac neque nibh. Praesent dapibus dolor nibh, sit amet maximus mauris rutrum a. Ut in magna ex. Nunc tempus sed orci quis aliquam. Sed consectetur sagittis porttitor. Nam efficitur dapibus massa. Etiam odio enim, sollicitudin sed enim mollis, maximus ultrices lacus. Donec tristique posuere augue, vel suscipit risus porttitor vel. Duis pretium cursus nunc ut aliquet. Sed nibh augue, aliquam vitae mi in, pellentesque volutpat turpis. Aenean molestie nec massa et fringilla. Aenean ultrices lorem eget mauris pretium cursus sit amet et lacus. Integer vel vestibulum sem.</p>
+
+<div class="wow b-box fadeInLeft"></div>
+
+{% endblock content %}

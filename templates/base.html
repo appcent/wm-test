@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ pageName }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+</head>
+<body class="b-body {{ page }}">
+
+{% include '_header.html' %}
+
+<div id="b-transparent"></div>
+
+<div class="b-wrapper">
+    {% if breadcrumbs | length > 0 %}
+    <div class="b-breadcrumb min-height-ie-fix">
+        {% for link in breadcrumbs %}
+        <div class="b-breadcrumb__item">
+            <a href="{{ link.url }}.html" class="b-breadcrumb__link">{{ link.name }}</a>
+        </div>
+        <div class="b-breadcrumb__symbol"><i class="fas fa-chevron-right"></i></div>
+        {% endfor %}
+        <div class="b-breadcrumb__item">{{ pageName }}</div>
+    </div>
+    {% endif %}
+</div>
+{% block content %}
+
+{% endblock content %}
+
+{% include '_footer.html' %}
+
+{% include '_modal.html' %}
+
+<script src="js/app.js"></script>
+</body>
+</html>

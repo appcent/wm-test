@@ -1,0 +1,26 @@
+@import '../node_modules/flexy-framework/src/defaults';
+@import 'settings';
+@import '../node_modules/flexy-framework/src/flexy';
+@import '../node_modules/slick-carousel/slick/slick.scss';
+
+@import 'vendor/iziModal';
+@import 'vendor/magnific-popup';
+@import 'vendor/animate';
+
+@import 'global';
+
+@import 'block/heading';
+@import 'block/feedback';
+
+.box {
+  width: flexy-size(xxlarge);
+  @include flexy-breakpoint(medium) {
+    color: red;
+  }
+}
+
+.b-box {
+  width: 100px;
+  height: 100px;
+  background-color: flexy-color(yellow);
+}

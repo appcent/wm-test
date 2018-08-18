@@ -1,0 +1,53 @@
+.b-pager {
+  display: flex;
+  margin: 1em 0;
+  align-items: center;
+
+  &__list {
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex: 1 0 auto;
+  }
+
+  &__total {
+    padding: 0 1em;
+  }
+
+  &__link {
+    box-sizing: border-box;
+    border-radius: $flexy-block-pager-border-radius;
+    text-align: center;
+    display: block;
+    padding: 0 0.2em;
+    text-decoration: none;
+    color: $flexy-block-pager-link-color;
+    transition: color 0.2s ease;
+
+    &_disabled {
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      color: $flexy-block-pager-link-active-color;
+    }
+  }
+
+  &__total {
+    color: $flexy-block-pager-total-color;
+  }
+
+  &__item {
+    margin: 0 5px;
+
+    &_current {
+      .b-pager__link {
+        cursor: not-allowed;
+        color: $flexy-block-pager-link-active-color;
+      }
+    }
+  }
+}
