@@ -1,0 +1,41 @@
+h1,.h1 {
+  font-size: flexy-size(xxlarge);
+}
+h2,.h2 {
+  font-size: flexy-size(xlarge);
+}
+h3,.h3 {
+  font-size: flexy-size(large);
+}
+h4,.h4 {
+  font-size: flexy-size(medium);
+}
+h5,.h5 {
+  font-size: flexy-size(small);
+}
+h6,.h6 {
+  font-size: flexy-size(xsmall);
+}
+
+.b-space {
+  height: flexy-size(xlarge);
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.b-main-page {
+  & .b-breadcrumb {
+    display: none;
+  }
+}
+
+.b-body-hidden {
+  overflow: hidden;
+}
+
+a {
+  cursor: pointer;
+}

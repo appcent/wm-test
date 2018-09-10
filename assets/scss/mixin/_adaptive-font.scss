@@ -1,0 +1,24 @@
+/*
+  font-size: adaptive-font(16, 32, 320, 992);
+    - минимальный размер текста
+    - максимальный размер текста
+    - минимальное разрешение
+    - максимальное разрешение
+*/
+
+@mixin adaptive-font(
+  $minFontSize,
+  $maxFontSize,
+  $minDisplayWidth,
+  $maxDisplayWidth
+) {
+  font-size: $minFontSize + px;
+  @media (min-width: $minDisplayWidth + px) {
+    $m: ($maxFontSize - $minFontSize) / ($maxDisplayWidth - $minDisplayWidth);
+    $b: ($minFontSize - $m * $minDisplayWidth) + px;
+    font-size: calc(#{$m} * 100vw + #{$b});
+  }
+  @media (min-width: $maxDisplayWidth + px) {
+    font-size: $maxFontSize + px;
+  }
+}

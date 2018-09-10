@@ -1,20 +1,27 @@
-//////Flexy-Framework
+/*
+ Настройки Flexy-Framework
+   - цвета - [ m-color_opacity1 || flexy-color(opacity1) ]
+   - размеры - [ m-size m-size_xxlarge || _xxlarge || flexy-size(xxlarge) ]
+   - хлебные крошки - [ @include flexy-breakpoint(medium) {} ]
+   - шрифт по умолчанию
+   - сетка
+   - обертка
+*/
 
-////color
-// m-color_opacity1 || flexy-color(opacity1)
 $flexy-colors: map-merge(
   $flexy-default-colors,
   (
-          default: #212121,
-          opacity1: #616161,
-          opacity2: #e0e0e0,
-          opacity3: #f5f5f5,
+          default: #666666,
+          white: #fff,
+          green: #00462b,
+          black: #333333,
+          gray: #b3b3b3,
+          gray1: #ecede8,
           yellow: #f8ed5e,
+
   )
 );
 
-////size
-// m-size m-size_xxlarge || _xxlarge || flexy-size(xxlarge)
 $flexy-sizes: (
         xxlarge: 2.5rem,
         xlarge: 2rem,
@@ -24,8 +31,6 @@ $flexy-sizes: (
         xsmall: 1rem,
 );
 
-////breakpoints
-// @include flexy-breakpoint(medium) {}
 $flexy-breakpoints: (
         small: 0,
         medium: 769px,
@@ -34,14 +39,69 @@ $flexy-breakpoints: (
         xxlarge: 1600px
 ) !default;
 
-////fonts
-@import "font/proxima";
-$flexy-font: 'Proxima Nova', $flexy-default-font;
+$flexy-font: 'Roboto', $flexy-default-font;
 
-////grid
 $flexy-grid-columns: 12 !default;
 $flexy-grid-gutter: 1.25rem !default;
 
-////wrapper
 $flexy-grid-wrapper-max-width: 1024px !default;
 $flexy-grid-wrapper-min-width: auto !default;
+
+
+/* Настройки FontAwesome */
+
+$fa-font-path: '../fonts' !default;
+
+/*
+  Настройки темы Owl Carousel
+    - цвета
+    - стрелки
+    - точки
+*/
+
+$color-base:			#869791 !default;
+$color-white:			#FFF !default;
+$color-gray:			#D6D6D6 !default;
+
+$nav-color: 			$color-white !default;
+$nav-color-hover:		$color-white !default;
+$nav-font-size: 		14px !default;
+$nav-rounded: 			3px !default;
+$nav-margin: 			5px !default;
+$nav-padding: 			4px 7px !default;
+$nav-background: 		$color-gray !default;
+$nav-background-hover:	$color-base !default;
+$nav-disabled-opacity: 	0.5 !default;
+
+$dot-width:				10px !default;
+$dot-height:			10px !default;
+$dot-rounded:			30px !default;
+$dot-margin: 			5px 7px !default;
+$dot-background:		$color-gray !default;
+$dot-background-active:	$color-base !default;
+
+
+/*
+ Настройки Hamburger
+    - оформление
+    - фильтр при наведении
+    - шаблон
+*/
+
+$hamburger-padding-x                       : 15px !default;
+$hamburger-padding-y                       : 15px !default;
+$hamburger-layer-width                     : 40px !default;
+$hamburger-layer-height                    : 4px !default;
+$hamburger-layer-spacing                   : 6px !default;
+$hamburger-layer-color                     : #000 !default;
+$hamburger-layer-border-radius             : 4px !default;
+$hamburger-hover-opacity                   : 0.7 !default;
+$hamburger-hover-transition-duration       : 0.15s !default;
+$hamburger-hover-transition-timing-function: linear !default;
+
+$hamburger-hover-use-filter: false !default; //false - не использовать
+$hamburger-hover-filter    : opacity(50%) !default;
+
+$hamburger-types: (
+        spin
+) !default;

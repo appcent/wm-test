@@ -9,7 +9,8 @@ let path = require('path'),
     sass = require('gulp-sass'),
     plumber = require('gulp-plumber'),
     watch = require('gulp-watch'),
-    nunjucks = require('gulp-nunjucks'),
+    //nunjucks = require('gulp-nunjucks'),
+    nunjucksRender = require('gulp-nunjucks-render'),
     data = require('gulp-data'),
     browserSync = require('browser-sync').create();
 
@@ -18,8 +19,9 @@ let settings = {
     sass: {},
     paths: {
         templates: [
-            '!../templates/base.html',
-            '../templates/**/*.html'
+            '!../templates/base.njk',
+            '!../templates/**/_*.+(html|njk)',
+            '../templates/**/*.+(html|njk)'
         ],
         images: './images/**/*{.jpg,.png,.svg}',
         fonts: './fonts/**/*{.eot,.otf,.woff,.woff2,.ttf,.svg}',
@@ -79,7 +81,7 @@ gulp.task('watch', ['templates'], () => {
     watch([].concat(settings.paths.css, settings.paths.fonts), () => {
         gulp.start('css');
     });
-    watch('../templates/**/*.html', () => {
+    watch('../templates/**/*.+(html|njk)', () => {
         gulp.start('templates');
         browserSync.reload();
     });
@@ -92,7 +94,9 @@ gulp.task('clean', cb => {
 gulp.task('templates', () => {
     return gulp.src(settings.paths.templates)
         .pipe(plumber())
-        .pipe(nunjucks.compile())
+        .pipe(nunjucksRender({
+            path: ['../templates']
+        }))
         .pipe(gulp.dest(settings.dst.templates));
 });
 
