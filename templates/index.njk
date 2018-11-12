@@ -104,15 +104,33 @@
     <div class="b-tabs">
         <div class="b-tabs__header">
             <div class="b-tabs__active-tab"></div>
-            <ul class="b-tabs__tab-list">
-                <a href="#" class="b-tabs__tab" data-tab="content_1">1</a>
-                <a href="#" class="b-tabs__tab" data-tab="content_2">2</a>
-                <a href="#" class="b-tabs__tab" data-tab="content_3">3</a>
-                <a href="#" class="b-tabs__tab" data-tab="content_4">4</a>
-                <a href="#" class="b-tabs__tab" data-tab="content_5">5</a>
-            </ul>
+            <div class="b-tabs__links">
+                <a href="#" class="b-tabs__tab" data-tab="#content_1">1</a>
+                <a href="#" class="b-tabs__tab" data-tab="#content_2">1</a>
+                <a href="#" class="b-tabs__tab" data-tab="#content_3">1</a>
+            </div>
         </div>
-        <div class="b-tabs__content"></div>
+        <div class="b-tabs__container">
+            <div class="b-tabs__content" id="content_1">
+                <div class="b-tabs">
+                    <div class="b-tabs__header">
+                        <div class="b-tabs__active-tab"></div>
+                        <div class="b-tabs__links">
+                            <a href="#" class="b-tabs__tab" data-tab="#content_4">1</a>
+                            <a href="#" class="b-tabs__tab" data-tab="#content_5">1</a>
+                            <a href="#" class="b-tabs__tab" data-tab="#content_6">1</a>
+                        </div>
+                    </div>
+                    <div class="b-tabs__container">
+                        <div class="b-tabs__content" id="content_4"></div>
+                        <div class="b-tabs__content" id="content_5"></div>
+                        <div class="b-tabs__content" id="content_6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="b-tabs__content" id="content_2"></div>
+            <div class="b-tabs__content" id="content_3"></div>
+        </div>
     </div>
 
     <div class="b-content__title h2">modal</div>

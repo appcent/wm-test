@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import './vendor/iziModal';
 import 'owl.carousel';
+import './modules/tabs';
 
 $(document)
     .ready(() => {
