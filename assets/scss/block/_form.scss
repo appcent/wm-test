@@ -1,0 +1,153 @@
+/* GLOBAL */
+$margin: (10px 0);
+$radius: 0;
+$border: (1px solid flexy-color(gray1));
+$bg: flexy-color(white);
+$height: 50px;
+/* Text */
+$padding: 1.125rem;
+$font-size: .75rem;
+/* Radio, check */
+$size: 16px;
+
+.b-form {
+
+
+  & * {
+    box-sizing: border-box;
+  }
+
+
+  &__input-text, &__input-email, &__input-password, &__input-tel, &__input-number, &__input-search, &__textarea {
+    position: relative;
+    margin: $margin;
+    > input, > textarea {
+      outline: none;
+      width: 100%;
+      border-radius: $radius;
+      border: $border;
+      font-size: $font-size;
+      padding: 0 $padding;
+      background: $bg;
+      height: $height;
+      line-height: $height;
+      color: inherit;
+      + label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .2s ease;
+        font-size: $font-size;
+        color: flexy-color(gray1);
+        padding: 0 $padding;
+        line-height: $height;
+        text-transform: uppercase;
+      }
+    }
+    &.is-focused {
+      > input + label, > textarea + label {
+        transform: translate3d(0, -30%, 0);
+        font-size: .5rem;
+      }
+    }
+  }
+  &__textarea {
+    > textarea {
+      overflow: hidden;
+      resize: none;
+      line-height: normal;
+      //изменяемые
+      height: 140px;
+      padding: $padding;
+      + label {
+        line-height: normal;
+        //изменяемые
+        padding: $padding;
+      }
+    }
+  }
+  &__input-number {
+    > input {
+      &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+
+
+  &__input-checkbox, &__input-radio {
+    margin: $margin;
+    > input {
+      position: absolute;
+      left: -9999px;
+      + label {
+        position: relative;
+        padding-left: $size + 16;
+        font-size: .75rem;
+        color: flexy-color(gray);
+        line-height: 1rem;
+        > .b-form__input-custom-checkbox {
+          position: absolute;
+          top: 0;
+          left: 0;
+          line-height: .75rem;
+          //фон
+          &:before {
+            content: '';
+            display: block;
+            width: $size;
+            height: $size;
+            border-radius: $radius;
+            border: $border;
+            background-color: $bg;
+          }
+          //чек
+          &:after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            color: flexy-color();
+            font-size: $size / 2;
+            font-weight: 700;
+          }
+        }
+        > a {
+          color: flexy-color(gray);
+        }
+      }
+      &:checked + label > .b-form__input-custom-checkbox:after {
+        opacity: 1;
+      }
+    }
+  }
+  &__input-radio > input + label > .b-form__input-custom-checkbox {
+    &:before {
+      border-radius: 50%;
+    }
+    &:after {
+      content: '';
+      width: $size - 4;
+      height: $size - 4;
+      border-radius: 50%;
+      background-color: flexy-color(green);
+    }
+  }
+
+
+  &__input-submit {
+    margin: $margin;
+    > input {
+      height: $height;
+      background-color: flexy-color(green);
+      border-radius: $height/2;
+      color: flexy-color(white);
+      cursor: pointer;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+}
