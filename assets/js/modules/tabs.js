@@ -36,10 +36,8 @@ $(document)
 
         if ($this.hasClass('is-active')) {
             $this.removeClass('is-active');
-            //$this.siblings('.b-tabs__links').slideUp(600);
         } else {
             $this.addClass('is-active');
-            //$this.siblings('.b-tabs__links').slideDown(600);
         }
     });
 
