@@ -8,151 +8,170 @@
 
 {% block content %}
 
-<div class="b-wrapper">
+    <div class="b-wrapper">
 
-    <div class="b-space"></div>
+        <div class="b-space"></div>
 
-    {% include '_slider.njk' %}
+        {% include '_slider.njk' %}
 
-    <div class="b-space"></div>
-    <div class="b-space"></div>
+        <div class="b-space"></div>
+        <div class="b-space"></div>
 
-    <div class="b-anchor" id="yamap"></div>
+        <div class="b-anchor" id="yamap"></div>
 
-    <div class="b-content__title h2">yamap</div>
+        <div class="b-content__title h2">yamap</div>
 
-    <!-- yamap -->
-    <div id="map" class="b-map"></div>
-    <!--/ yamap-->
+        <!-- yamap -->
+        <div id="map" class="b-map"></div>
+        <!--/ yamap-->
 
-    <div class="b-space"></div>
+        <div class="b-space"></div>
 
-    <div class="b-anchor" id="form"></div>
+        <div class="b-anchor" id="form"></div>
 
-    <div class="b-content__title h2">form</div>
+        <div class="b-content__title h2">form</div>
 
-    <!-- form -->
-    <div class="b-form-getcall">
-        <form action="" class="b-form" method="post">
+        <!-- form -->
+        <div class="b-form-getcall">
+            <form action="" class="b-form" method="post">
 
 
-            <div class="b-form__input-text">
-                <input class="" type="text" name="text" id="text">
-                <label for="text">text</label>
-            </div>
+                <div class="b-form__input-text">
+                    <input class="" type="text" name="text" id="text">
+                    <label for="text">text</label>
+                </div>
 
-            <div class="b-form__input-password">
-                <input class="" type="password" name="password" id="password">
-                <label for="password">password</label>
-            </div>
+                <div class="b-form__input-password">
+                    <input class="" type="password" name="password" id="password">
+                    <label for="password">password</label>
+                </div>
 
-            <div class="b-form__input-email">
-                <input class="" type="email" name="email" id="email">
-                <label for="email">email</label>
-            </div>
+                <div class="b-form__input-email">
+                    <input class="" type="email" name="email" id="email">
+                    <label for="email">email</label>
+                </div>
 
-            <div class="b-form__input-tel">
-                <input class="" type="tel" name="tel" id="tel">
-                <label for="tel">tel</label>
-            </div>
+                <div class="b-form__input-tel">
+                    <input class="" type="tel" name="tel" id="tel">
+                    <label for="tel">tel</label>
+                </div>
 
-            <div class="b-form__input-number">
-                <input class="" type="number" name="number" id="number">
-                <label for="number">number</label>
-            </div>
+                <div class="b-form__input-number">
+                    <input class="" type="number" name="number" id="number">
+                    <label for="number">number</label>
+                </div>
 
-            <div class="b-form__input-search">
-                <input class="" type="search" name="search" id="search">
-                <label for="search">search</label>
-            </div>
+                <div class="b-form__input-search">
+                    <input class="" type="search" name="search" id="search">
+                    <label for="search">search</label>
+                </div>
 
-            <div class="b-form__textarea">
-                <textarea name="textarea" id="textarea"></textarea>
-                <label for="textarea">textarea</label>
-            </div>
-            <div class="b-form__input-text">
-                <input name="city" type="text" value="" id="city">
-                <label for="city">city</label>
-            </div>
-            <div class="b-form__input-checkbox">
-                <input id="agree" type="checkbox" name="agree">
-                <label for="agree">
-                    <span class="b-form__input-custom-checkbox"></span>
-                    checkbox
-                    <a href="#" target="_blank">policy</a>
-                </label>
-            </div>
-            <div class="b-form__input-radio">
-                <input id="radio" type="radio" name="radio">
-                <label for="radio">
-                    <span class="b-form__input-custom-checkbox"></span>
-                    radio
-                    <a href="#" target="_blank">policy</a>
-                </label>
-            </div>
-            <input type="hidden" value="Form" name="form_name">
-            <div class="b-form__input-submit">
-                <input type="submit" value="Send">
-            </div>
-        </form>
-    </div>
-    <!--/ form -->
-
-    <div class="b-space"></div>
-
-    {# Tabs #}
-    <div class="b-tabs">
-        <div class="b-tabs__header">
-            <div class="b-tabs__active-tab"></div>
-            <div class="b-tabs__links">
-                <a href="#" class="b-tabs__tab is-active" data-tab="#content_1">Описание</a>
-                <a href="#" class="b-tabs__tab" data-tab="#content_2">Характеристики</a>
-                <a href="#" class="b-tabs__tab" data-tab="#content_3">Контакты</a>
-            </div>
+                <div class="b-form__textarea">
+                    <textarea name="textarea" id="textarea"></textarea>
+                    <label for="textarea">textarea</label>
+                </div>
+                <div class="b-form__input-text">
+                    <input name="city" type="text" value="" id="city">
+                    <label for="city">city</label>
+                </div>
+                <div class="b-form__input-checkbox">
+                    <input id="agree" type="checkbox" name="agree">
+                    <label for="agree">
+                        <span class="b-form__input-custom-checkbox"></span>
+                        checkbox
+                        <a href="#" target="_blank">policy</a>
+                    </label>
+                </div>
+                <div class="b-form__input-radio">
+                    <input id="radio" type="radio" name="radio">
+                    <label for="radio">
+                        <span class="b-form__input-custom-checkbox"></span>
+                        radio
+                        <a href="#" target="_blank">policy</a>
+                    </label>
+                </div>
+                <input type="hidden" value="Form" name="form_name">
+                <div class="b-form__input-submit">
+                    <input type="submit" value="Send">
+                </div>
+            </form>
         </div>
-        <div class="b-tabs__container">
-            <div class="b-tabs__content is-active" id="content_1">
-                Текст описания
-                <div class="b-tabs" data-tab-mobile>
-                    <div class="b-tabs__header">
-                        <div class="b-tabs__active-tab"></div>
-                        <div class="b-tabs__links">
-                            <a href="#" class="b-tabs__tab is-active" data-tab="#content_4">Описание</a>
-                            <a href="#" class="b-tabs__tab" data-tab="#content_5">Характеристики</a>
-                            <a href="#" class="b-tabs__tab" data-tab="#content_6">Контакты</a>
+        <!--/ form -->
+
+        <div class="b-space"></div>
+
+        {# Tabs #}
+        <div class="b-info">
+            <div class="b-info__title">Вкладки - <code class="b-info__code">b-tabs</code></div>
+            <div class="b-info__title">Структура:</div>
+            <figure class="b-info__figrue">
+                <code class="b-info__code">
+
+                </code>
+            </figure>
+        </div>
+        <div class="b-tabs">
+            <div class="b-tabs__header">
+                <div class="b-tabs__active-tab"></div>
+                <div class="b-tabs__links">
+                    <a href="#" class="b-tabs__tab is-active" data-tab="#content_1">Описание</a>
+                    <a href="#" class="b-tabs__tab" data-tab="#content_2">Характеристики</a>
+                    <a href="#" class="b-tabs__tab" data-tab="#content_3">Контакты</a>
+                </div>
+            </div>
+            <div class="b-tabs__container">
+                <div class="b-tabs__content is-active" id="content_1">
+                    Текст описания
+                    <div class="b-tabs" data-tab-mobile>
+                        <div class="b-tabs__header">
+                            <div class="b-tabs__active-tab"></div>
+                            <div class="b-tabs__links">
+                                <a href="#" class="b-tabs__tab is-active" data-tab="#content_4">Описание</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#content_5">Характеристики</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#content_6">Контакты</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#tab_1">tab1</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#tab_2">tab2</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#tab_3">tab4</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#tab_4">tab5</a>
+                                <a href="#" class="b-tabs__tab" data-tab="#tab_5">tab6</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="b-tabs__container">
-                        <div class="b-tabs__content is-active" id="content_4">
-                            Текст описания
-                        </div>
-                        <div class="b-tabs__content" id="content_5">
-                            Различные характеристики
-                        </div>
-                        <div class="b-tabs__content" id="content_6">
-                            Наши контакты
+                        <div class="b-tabs__container">
+                            <div class="b-tabs__content is-active" id="content_4">
+                                Текст описания
+                            </div>
+                            <div class="b-tabs__content" id="content_5">
+                                Различные характеристики
+                            </div>
+                            <div class="b-tabs__content" id="content_6">
+                                Наши контакты
+                            </div>
+                            <div class="b-tabs__content" id="tab_1">tab-content - 1</div>
+                            <div class="b-tabs__content" id="tab_2">tab-content - 2</div>
+                            <div class="b-tabs__content" id="tab_3">tab-content - 3</div>
+                            <div class="b-tabs__content" id="tab_4">tab-content - 4</div>
+                            <div class="b-tabs__content" id="tab_5">tab-content - 5</div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="b-tabs__content" id="content_2">
-                Различные характеристики
-            </div>
-            <div class="b-tabs__content" id="content_3">
-                Наши контакты
+                <div class="b-tabs__content" id="content_2">
+                    Различные характеристики
+                </div>
+                <div class="b-tabs__content" id="content_3">
+                    Наши контакты
+                </div>
             </div>
         </div>
+
+        <div class="b-content__title h2">modal</div>
+
+        <!-- modal -->
+        <a href="#" class="b-btn" data-izimodal-open="#get-call" data-izimodal-transitionin="fadeInDown">Open modal</a>
+        <!--/ modal -->
+
+        <div class="b-space"></div>
+
+
     </div>
-
-    <div class="b-content__title h2">modal</div>
-
-    <!-- modal -->
-    <a href="#" class="b-btn" data-izimodal-open="#get-call" data-izimodal-transitionin="fadeInDown">Open modal</a>
-    <!--/ modal -->
-
-    <div class="b-space"></div>
-
-
-</div>
 
 {% endblock content %}
