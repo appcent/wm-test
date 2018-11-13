@@ -69,6 +69,7 @@
         transform: scaleY(1);
       }
       & .b-tabs__active-tab {
+        display: block;
         border-bottom: 1px solid dimgrey;
         padding: .5rem .9rem;
         position: relative;
@@ -95,15 +96,12 @@
     }
   }
   &__active-tab {
-    display: block;
+    display: none;
   }
   &__container {
     padding: .9rem 0;
   }
   @include flexy-breakpoint(medium) {
-    &__active-tab {
-      display: none;
-    }
     &[data-tab-mobile] {
       & > .b-tabs__header {
         & .b-tabs__links {
@@ -114,6 +112,7 @@
           background-color: transparent;
           box-shadow: none;
           padding: 0;
+          transform: none;
           & .b-tabs__tab {
             &:after {
               content: '';
@@ -122,6 +121,9 @@
               display: block;
             }
           }
+        }
+        & .b-tabs__active-tab {
+          display: none;
         }
       }
     }

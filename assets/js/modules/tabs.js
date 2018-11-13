@@ -26,9 +26,7 @@ $(document)
 
         if ($parent[0].hasAttribute('data-tab-mobile')) {
             setActiveTab($activeTab);
-            if (!window.matchMedia('(min-width: 767px)').matches) {
-                $activeTab.trigger('click');
-            }
+            $activeTab.trigger('click');
         }
     })
     .on('click', '.b-tabs__active-tab', e => {
