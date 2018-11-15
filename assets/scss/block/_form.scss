@@ -5,10 +5,14 @@ $border: (1px solid flexy-color(gray1));
 $bg: flexy-color(white);
 $height: 50px;
 /* Text */
-$padding: 1.125rem;
+$padding: 18px;
 $font-size: .75rem;
 /* Radio, check */
 $size: 16px;
+/* Number */
+$numberHeight: 50%;
+$numberWidth: $height/2;
+$numberPadding: $numberWidth + $padding;
 
 .b-form {
 
@@ -68,8 +72,46 @@ $size: 16px;
   }
   &__input-number {
     > input {
+      padding: 0 $numberPadding 0 $padding;
+      overflow: hidden;
       &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
         -webkit-appearance: none;
+      }
+    }
+  }
+  &__number {
+    &-btn {
+      position: absolute;
+      right: 0;
+      height: 50%;
+      display: block;
+      font-size:  $font-size;
+      text-decoration: none;
+      width: $numberWidth;
+      line-height: $numberHeight;
+      text-align: center;
+      transition: .2s ease-in-out;
+      border-left: $border;
+      overflow: hidden;
+      &:hover {
+        color: #fff;
+        background-color: #696969;
+      }
+      i {
+        line-height: $numberWidth;
+      }
+    }
+    &-up {
+      top: 0;
+      border-bottom: $border;
+      &:hover i {
+        animation: arrowHoverUp 1s ease-in-out 1 normal;
+      }
+    }
+    &-down {
+      bottom: 0;
+      &:hover i {
+        animation: arrowHoverDown 1s ease-in-out 1 normal;
       }
     }
   }
@@ -150,4 +192,17 @@ $size: 16px;
       width: 100%;
     }
   }
+}
+
+@keyframes arrowHoverDown {
+  0% {opacity: 1; transform: translateY(0px) scale(1);}
+  25%{opacity: 0; transform:translateY(10px) scale(0.9);}
+  26%{opacity: 0; transform:translateY(-10px) scale(0.9);}
+  55% {opacity: 1; transform: translateY(0px) scale(1);}
+}
+@keyframes arrowHoverUp {
+  0% {opacity: 1; transform: translateY(0px) scale(1);}
+  25%{opacity: 0; transform:translateY(-10px) scale(0.9);}
+  26%{opacity: 0; transform:translateY(10px) scale(0.9);}
+  55% {opacity: 1; transform: translateY(0px) scale(1);}
 }

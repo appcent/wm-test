@@ -3,6 +3,7 @@ import './vendor/iziModal';
 import 'owl.carousel';
 import './modules/tabs';
 import './modules/select';
+import './modules/form';
 
 $(document)
     .ready(() => {
