@@ -53,9 +53,9 @@ $(document)
         $('.b-slider').trigger('to.owl.carousel', [countIndex, speed]);
     })
 
-    .on('focus blur', 'textarea, input', function(e){
+    /*.on('focus blur', 'textarea, input', function(e){
         $(this).parent().toggleClass('is-focused', (e.type === 'focusin' || this.value.length > 0));
-    }).trigger('blur')
+    }).trigger('blur')*/
 
     .on('click', '.b-header-nav__burger', e => {
         $(e.target).closest('.b-header-nav__burger').toggleClass('is-active');
