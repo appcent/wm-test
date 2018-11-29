@@ -1,0 +1,11 @@
+@each $name, $size in $flexy-breakpoints {
+  @media (min-width: $size) {
+    .b-order_#{$name} {
+      @for $n from 0 through $flexy-grid-columns {
+        &_#{$n} {
+          order: $n;
+        }
+      }
+    }
+  }
+}
