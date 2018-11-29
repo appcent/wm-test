@@ -11,7 +11,7 @@
 
 <div id="b-transparent"></div>
 
-{% include '_header.njk' %}
+{% include 'parts/_header.njk' %}
 
 <div class="b-wrapper">
     {% if breadcrumbs | length > 0 %}
@@ -31,7 +31,7 @@
 
 {% endblock content %}
 
-{% include '_modal.njk' %}
+{% include 'parts/_modal.njk' %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/css-element-queries/1.0.2/ResizeSensor.min.js"></script>
 <script src="js/app.js"></script>
 </body>
