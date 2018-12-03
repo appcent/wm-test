@@ -10,7 +10,7 @@ import gulpif from 'gulp-if';
 browserSync.create();
 
 const paths = {
-	build: '../public',
+	build: '../public/assets/',
 	from: {
 		css: './scss/**/*{.css,.scss,.sass}',
 		tpl: '../templates/**/!(base|_*){.njk,.nunjucks}',
@@ -21,7 +21,7 @@ const paths = {
 		]
 	},
 	to: {
-		css: '../public/css',
+		css: '../public/assets/css',
 		tpl: '../public'
 	}
 };
@@ -47,12 +47,12 @@ export const tpl = () => {
 export const sync = () => {
 	browserSync.init({
 		server: {
-			baseDir: paths.build,
+			baseDir: '../public',
 			index: 'home.html'
 		},
 		open: false
 	});
-	browserSync.watch(paths.build, browserSync.reload);
+	browserSync.watch('../public', browserSync.reload);
 };
 
 export const watch = () => {
