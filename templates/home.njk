@@ -1,7 +1,273 @@
 {% extends 'base.njk' %}
 
+{% set page = 'b-main-page' %}
+{% set pageName = 'Шаблон' %}
+{% set breadcrumbs = [{'name':'Главная','url':'index'}] %}
+{% set navActiveItem = 0 %}
+
+
 {% block content %}
 
+    <div class="b-wrapper">
 
+        <div class="b-space"></div>
+
+        {% include 'parts/_slider.njk' %}
+
+        <div class="b-space"></div>
+        <div class="b-space"></div>
+
+        <div class="b-anchor" id="yamap"></div>
+
+        <div class="b-content__title h2">yamap</div>
+
+        <!-- yamap -->
+        <div id="map" class="b-map"></div>
+        <!--/ yamap-->
+
+        <div class="b-space"></div>
+
+        <div class="b-anchor" id="form"></div>
+
+        {# Forms #}
+        <div class="b-info-title">Формы / Forms</div>
+        <div class="b-info">
+            <form action="" method="post">
+                <div class="b-form">
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="text" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">Text</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="password" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">Password</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="tel" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">Tel</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="email" name="email" class="b-input__field" required>
+                                <span class="b-input__placeholder">Email</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    {#<div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="number" name="number" min="10" class="b-input__field" required>
+                                <span class="b-input__placeholder">Number</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="search" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">Search</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="date" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">Date</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>#}
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="url" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">URL</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="false">
+                            <label class="b-input__wrapper">
+                                <textarea name="message" class="b-input__field b-input__field--textarea"
+                                          required></textarea>
+                                <span class="b-input__placeholder">Textarea</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="false">
+                            <label class="b-input__wrapper b-radio">
+                                <input type="radio" name="name" class="b-input__field b-radio__field">
+                                <span class="b-radio__label">Radio</span>
+                                <div class="b-radio__custom"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="false">
+                            <label class="b-input__wrapper b-checkbox">
+                                <input type="checkbox" name="name" class="b-input__field b-checkbox__field" required>
+                                <span class="b-checkbox__label">Checkbox</span>
+                                <div class="b-checkbox__custom"></div>
+                            </label>
+                        </div>
+                    </div>
+                    {#<div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="range" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">Range</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input" data-error-mes="true">
+                            <label class="b-input__wrapper">
+                                <input type="file" name="name" class="b-input__field">
+                                <span class="b-input__placeholder">File</span>
+                            </label>
+                            <div class="b-input__error"></div>
+                        </div>
+                    </div>#}
+                    <div class="b-form__row">
+                        <div class="b-form__input b-input">
+                            <input type="submit" name="name" value="Отправить" class="b-input-btn">
+                        </div>
+                        {#<div class="b-form__input b-input">
+                            <input type="reset" name="name" value="Сбросить" class="b-input-btn">
+                        </div>#}
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="b-space"></div>
+
+        {# Search #}
+        <div class="b-info-title">Поиск / Search</div>
+        <div class="b-info">
+            <form action="" class="b-form">
+                <div class="b-form__input-search">
+                    <input class="" type="search" name="search" id="search">
+                    <label for="search">search</label>
+                    <div class="b-form__search-cls" data-form-search="search"><i class="fas fa-times"></i></div>
+                    <button class="b-form__search-btn" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="b-space"></div>
+
+        {# Tabs #}
+        <div class="b-info-title">Вкладки / Tabs</div>
+        <div class="b-info-code">Чтобы включить мобильную адптацию добавь атрибут <code>data-tab-mobile</code> к
+            родителю <code>b-tabs</code></div>
+        <div class="b-info-code">Чтобы выбрать активуную вкладку по умолчанию добавль класс <code>is-active</code> к
+            табу <code>b-tabs__tab</code> и к контенту <code>b-tabs__content</code></div>
+        <div class="b-info">
+            <div class="b-tabs">
+                <div class="b-tabs__header">
+                    <div class="b-tabs__active-tab"></div>
+                    <div class="b-tabs__links">
+                        <a href="#" class="b-tabs__tab is-active" data-tab="#nested_1">Описание</a>
+                        <a href="#" class="b-tabs__tab" data-tab="#nested_2">Характеристики</a>
+                        <a href="#" class="b-tabs__tab" data-tab="#nested_3">Контакты</a>
+                    </div>
+                </div>
+                <div class="b-tabs__container">
+                    <div class="b-tabs__content is-active" id="nested_1">
+                        Вкладки с мобильной адаптацией
+                        <div class="b-tabs" data-tab-mobile>
+                            <div class="b-tabs__header">
+                                <div class="b-tabs__active-tab"></div>
+                                <div class="b-tabs__links">
+                                    <a href="#" class="b-tabs__tab is-active" data-tab="#inner-nested_1">Вложенная
+                                        влкадка -
+                                        1</a>
+                                    <a href="#" class="b-tabs__tab" data-tab="#inner-nested_2">Вложенная влкадка - 2</a>
+                                    <a href="#" class="b-tabs__tab" data-tab="#inner-nested_3">Вложенная влкадка - 3</a>
+                                </div>
+                            </div>
+                            <div class="b-tabs__container">
+                                <div class="b-tabs__content is-active" id="inner-nested_1">
+                                    Контент 1й вложенной вкладки
+                                </div>
+                                <div class="b-tabs__content" id="inner-nested_2">
+                                    Контент 2й вложенной вкладки
+                                </div>
+                                <div class="b-tabs__content" id="inner-nested_3">
+                                    Контент 3й вложенной вкладки
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-tabs__content" id="nested_2">
+                        Текст характеристик
+                    </div>
+                    <div class="b-tabs__content" id="nested_3">
+                        Текст контактов
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="b-space"></div>
+
+        {# Select #}
+        <div class="b-info-title">Списки / Select</div>
+        <div class="b-info">
+            <div class="b-custom-select">
+                <select>
+                    <option value="0">Select car:</option>
+                    <option value="1">Audi</option>
+                    <option value="2">BMW</option>
+                    <option value="3">Citroen</option>
+                    <option value="4">Ford</option>
+                    <option value="5">Honda</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="b-space"></div>
+
+        <div class="b-content__title h2">modal</div>
+
+        <!-- modal -->
+        <a href="#" class="b-btn" data-izimodal-open="#get-call" data-izimodal-transitionin="fadeInDown">Open modal</a>
+        <!--/ modal -->
+
+        <div class="b-space"></div>
+
+        <div class="b-order_small_1">1</div>
+        <div class="b-order_medium_2">1</div>
+        <div class="b-order_large_1">1</div>
+        <div class="b-order_xlarge_1">1</div>
+        <div class="b-order_xxlarge_1">1</div>
+
+
+    </div>
 
 {% endblock content %}
