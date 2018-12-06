@@ -11,43 +11,39 @@
 $flexy-colors: map-merge(
   $flexy-default-colors,
   (
-          default: #666666,
+          default: #323232,
           white: #fff,
-          green: #00462b,
-          black: #333333,
-          gray: #b3b3b3,
-          gray1: #ecede8,
-          yellow: #f8ed5e,
-          code: #e83e8c,
-          success: #39d227,
-          error: #e2412d
-
+          red: #ff2105,
+          blue_light: #7bc1e5,
+          blue: #0f6691,
+          black: #000,
+          gray: #e8e8e8,
   )
 );
 
 $flexy-sizes: (
-        xxlarge: 2.5rem,
-        xlarge: 2rem,
-        large: 1.75rem,
-        medium: 1.5rem,
-        small: 1.25rem,
-        xsmall: 1rem,
+        xxlarge: 2.25rem, //36
+        xlarge: 1.5rem, //24
+        large: 1.25rem, //20
+        medium: .9375rem, //15
+        small: .75rem, //12
+        xsmall: .625rem, //10
 );
 
 $flexy-breakpoints: (
         small: 0,
         medium: 769px,
         large: 992px,
-        xlarge: 1200px,
+        xlarge: 1228px,
         xxlarge: 1600px
 ) !default;
 
 $flexy-font: 'Roboto', $flexy-default-font;
 
 $flexy-grid-columns: 12 !default;
-$flexy-grid-gutter: 1.25rem !default;
+$flexy-grid-gutter: .875rem !default; //14
 
-$flexy-grid-wrapper-max-width: 1024px !default;
+$flexy-grid-wrapper-max-width: 1228px !default;
 $flexy-grid-wrapper-min-width: auto !default;
 
 
@@ -82,29 +78,3 @@ $dot-rounded:			30px !default;
 $dot-margin: 			5px 7px !default;
 $dot-background:		$color-gray !default;
 $dot-background-active:	$color-base !default;
-
-
-/*
- Настройки Hamburger
-    - оформление
-    - фильтр при наведении
-    - шаблон
-*/
-
-$hamburger-padding-x                       : 15px !default;
-$hamburger-padding-y                       : 15px !default;
-$hamburger-layer-width                     : 40px !default;
-$hamburger-layer-height                    : 4px !default;
-$hamburger-layer-spacing                   : 6px !default;
-$hamburger-layer-color                     : #000 !default;
-$hamburger-layer-border-radius             : 4px !default;
-$hamburger-hover-opacity                   : 0.7 !default;
-$hamburger-hover-transition-duration       : 0.15s !default;
-$hamburger-hover-transition-timing-function: linear !default;
-
-$hamburger-hover-use-filter: false !default; //false - не использовать
-$hamburger-hover-filter    : opacity(50%) !default;
-
-$hamburger-types: (
-        spin
-) !default;

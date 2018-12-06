@@ -16,13 +16,14 @@ const paths = {
 		tpl: '../templates/**/!(base|_*){.njk,.nunjucks}',
 		files: [
 			'./images/**/*{.jpg,.png,.svg,.jpeg}',
-			'./fonts/**/*{.eot,.otf,.woff,.woff2,.ttf,.svg}',
-			'./uploads/**/*{.jpg,.png,.svg,.jpeg,.pdf,.xls,.docx}'
-		]
+			'./fonts/**/*{.eot,.otf,.woff,.woff2,.ttf,.svg}'
+		],
+		uploads: './uploads/**/*{.jpg,.png,.svg,.jpeg,.pdf,.xls,.docx}'
 	},
 	to: {
 		css: '../public/assets/css',
-		tpl: '../public'
+		tpl: '../public',
+		uploads: '../public'
 	}
 };
 
@@ -59,6 +60,7 @@ export const watch = () => {
 	gulp.watch(paths.from.css, gulp.series(css));
 	gulp.watch('../templates/**/*.njk', gulp.series(tpl));
 	gulp.watch(paths.from.files, gulp.series(files));
+	gulp.watch(paths.from.uploads, gulp.series(uploads));
 };
 
 export const clean = cb => {
@@ -70,8 +72,13 @@ export const files = () => {
 		.pipe(gulp.dest(paths.build))
 };
 
-export const dev = gulp.series(gulp.parallel(css, tpl, files), gulp.parallel(watch, sync));
+export const uploads = () => {
+	return gulp.src(paths.from.uploads, { base: './' })
+		.pipe(gulp.dest(paths.to.uploads))
+};
 
-export const prod = gulp.series(gulp.parallel(css, tpl, files));
+export const dev = gulp.series(gulp.parallel(css, tpl, files, uploads), gulp.parallel(watch, sync));
+
+export const prod = gulp.series(gulp.parallel(css, tpl, files, uploads));
 
 export default dev;

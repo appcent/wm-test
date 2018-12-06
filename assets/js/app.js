@@ -1,14 +1,11 @@
 import $ from 'jquery';
 import './vendor/iziModal';
-import './_tabs';
-import './_form';
-import './_select';
-import './_sliders';
+import 'owl.carousel';
 
 $(document)
     .ready(() => {
 
-        ymaps.ready(mapInit);
+        //ymaps.ready(mapInit);
 
         $('.b-modal').iziModal({
             width: 820,
@@ -16,14 +13,39 @@ $(document)
             padding: 15
         });
 
+		$('.b-slider').owlCarousel({
+			items: 1,
+			loop: true,
+			margin: 15
+		});
+
+		$('.b-input__field').each(function () {
+			isActive($(this));
+		});
+
     })
-    .on('click', '.b-header-nav__burger', e => {
-        $(e.target).closest('.b-header-nav__burger').toggleClass('is-active');
+	.on('click', '.b-slider-arrow', e => {
+		e.preventDefault();
 
-        $('.b-header-mob-nav').toggleClass('is-open');
+		let $target = $(e.target).closest('.b-slider-arrow'),
+			owlSelector = $target.attr('data-slider');
 
-        $('body').toggleClass('b-body-hidden');
-    });
+		if ($target.hasClass('b-slider-arrow__next')) {
+			$(owlSelector).trigger('next.owl.carousel', [700]);
+		} else if ($target.hasClass('b-slider-arrow__prev')) {
+			$(owlSelector).trigger('prev.owl.carousel', [700]);
+		}
+	})
+	.on('input', '.b-input__field', e => {
+		const $field = $(e.target).closest('.b-input__field');
+		isActive($field);
+	});
+
+
+const isActive = $field => {
+	const $input = $field.parents('.b-input');
+	$field.val().length ? $input.addClass('is-active') : $input.removeClass('is-active');
+};
 
 //ymap
 const mapInit = () => {
