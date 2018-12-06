@@ -3,7 +3,7 @@ import $ from 'jquery';
 $(document)
     .ready(() => {
 
-        const $field = $('.b-input__field');
+        const $field = $('.js-field');
         if ($field.length) {
             $field.each(function () {
                 isActive($(this));
@@ -11,59 +11,25 @@ $(document)
         }
 
     })
-    .on('click', '.b-form__number-btn', e => {
+    .on('click', '.b-input-number__btn', e => {
        e.preventDefault();
-
-       const $btn = $(e.target).closest('.b-form__number-btn');
-       const $input = $('#'+ $btn.attr('data-form-num'));
-       let count = $input.val();
-
-       if ($btn.hasClass('b-form__number-up')) {
-           count++;
-           $input.val(count);
-       } else if (count > 0) {
-           count--;
-           $input.val(count);
+       const $btn = $(e.target).closest('.b-input-number__btn'),
+           $input = $('#' + $btn.attr('data-id-number')),
+           number = $input[0];
+       if ($btn.hasClass('b-input-number__up')) {
+           number.stepUp();
+       } else if (number.value > 0) {
+           number.stepDown();
        }
+		isActive($input);
     })
-    .on('input', '.b-input__field', e => {
-        const $field = $(e.target).closest('.b-input__field');
-
+    .on('input', '.js-field', e => {
+        console.log('event field');
+        const $field = $(e.target).closest('.js-field');
         isActive($field);
-        isValidity($field);
-    })
-    .on('click', '[type="submit"]', e => {
-        const $form = $(e.target).closest('form');
-        const $field = $form.find('.b-input__field');
-
-        $field.each( function () {
-           isValidity($(this))
-        });
-
-        if ($form.find('.is-error').length) e.preventDefault();
     });
 
-const isValidity = $field => {
-    const $error = $field.parent().siblings('.b-input__error');
-    const validityOn = $field.parents('.b-input').attr('data-error-mes');
-
-    if ($field[0].validity.valid) {
-        $field.removeClass('is-error');
-        $field.addClass('is-valid');
-        if (validityOn === 'true') {
-            $error.text('');
-        }
-    } else {
-        $field.removeClass('is-valid');
-        $field.addClass('is-error');
-        if (validityOn === 'true') {
-            $error.text($field[0].validationMessage);
-        }
-    }
-};
-
 const isActive = $field => {
-    const $input = $field.parents('.b-input');
-
-    $field.val().length ? $input.addClass('is-active') : $input.removeClass('is-active');
+    const $input = $field.parent('.b-form__elem');
+    $field.val().length && !$field.hasClass('is-active') ? $input.addClass('is-active') : $input.removeClass('is-active');
 };

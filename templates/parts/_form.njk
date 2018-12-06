@@ -1,0 +1,39 @@
+<form action="" method="post" class="b-form">
+    <div class="b-form__title">Standard fields</div>
+    {# Text #}
+    <div class="b-form__elem b-input">
+        <input type="text" name="text" id="text" class="b-input__field js-field">
+        <label for="text" class="b-input__label">Text</label>
+    </div>
+    {# Textarea #}
+    <div class="b-form__elem b-textarea">
+        <textarea name="textarea" id="textarea" class="b-textarea__field js-field"></textarea>
+        <label for="textarea" class="b-textarea__label">Textarea</label>
+    </div>
+    {# Checkbox #}
+    <div class="b-form__elem b-checkbox">
+        <input type="checkbox" name="checkbox" id="checkbox" class="b-checkbox__field">
+        <label for="checkbox" class="b-checkbox__label"><span class="b-checkbox__custom"></span>Checkbox</label>
+    </div>
+    {# Radio #}
+    <div class="b-form__elem b-radio">
+        <input type="radio" name="radio" id="radio" class="b-radio__field">
+        <label for="radio" class="b-radio__label"><span class="b-radio__custom"></span>Radio</label>
+    </div>
+    <div class="b-form__title">Specific fields</div>
+    {# Number #}
+    <div class="b-form__elem b-input b-input-number">
+        <input type="number" name="number" id="number" class="b-input__field js-field">
+        <label for="number" class="b-input__label">Number</label>
+        <div class="b-input-number__controls">
+            <a href="#" class="b-input-number__btn b-input-number__up" data-id-number="number"><i class="fas fa-angle-up"></i></a>
+            <a href="#" class="b-input-number__btn b-input-number__down" data-id-number="number"><i class="fas fa-angle-down"></i></a>
+        </div>
+    </div>
+    {# Search #}
+    <div class="b-form__elem b-input b-input-search">
+        <input type="search" name="search" id="search" class="b-input__field js-field">
+        <label for="search" class="b-input__label">Search</label>
+        <button class="b-input-search__btn" type="button"><i class="fas fa-search"></i></button> {# else submit #}
+    </div>
+</form>
