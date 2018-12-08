@@ -65,7 +65,18 @@ $(document)
 		const $target = $(e.target).closest('.js-range-field');
 		const slider = $target.parents('.b-range__result').siblings('.b-range__slider')[0];
 		slider.noUiSlider.setHandle($target.attr('data-range'), $target.val());
-    });
+    })
+	.on('change', '.b-file__field', e => {
+		const $target = $(e.target).closest('.b-file__field');
+		const $name = $target.siblings('.b-file__name');
+		if ($target.val()) {
+			$name.text($target.val().split('\\').pop());
+			$name.addClass('is-active');
+		} else {
+			$name.text('');
+			$name.removeClass('is-active');
+		}
+	});
 /* Active */
 const isActive = $field => {
     const $input = $field.parent('.b-form__elem');

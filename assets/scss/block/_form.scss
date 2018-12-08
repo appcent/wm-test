@@ -209,6 +209,32 @@ $tHeight: 100px;
   }
 }
 
+.b-file {
+  display: flex;
+  align-items: center;
+  &__name {
+    color: flexy-color(black);
+    transition: .2s ease-in-out;
+    &.is-active {
+      padding-right: 15px;
+    }
+  }
+  &__field {
+    opacity: 0;
+    width: .1px;
+    height: .1px;
+  }
+  &__label {
+    line-height: 34px;
+    height: 50px;
+    border-radius: 4px;
+    text-align: center;
+    padding: .5rem .9rem;
+    border: 1px solid flexy-color(code);
+    color: flexy-color(code);
+  }
+}
+
 @keyframes arrowHoverDown {
   0% {opacity: 1; transform: translateY(0px) scale(1);}
   25%{opacity: 0; transform:translateY(10px) scale(0.9);}
