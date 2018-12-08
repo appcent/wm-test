@@ -16,22 +16,24 @@ $(document)
         const im = new Inputmask('+7(999)999-99-99');
         im.mask($('[type="tel"]')[0]);
 
-        const $range = $('.b-range__slider')[0];
-        const $rangeRes = $('.b-range__input input');
-		noUiSlider.create($range, {
-			start: [20, 60],
-			connect: [false, true, false],
-            step: 1,
-			range: {
-				min: 0,
-				max: 100
-			},
-			cssPrefix: 'b-range-',
-			format: wNumb({decimals: false})
-		});
-		$range.noUiSlider.on('update', (values, handle) => {
-			$rangeRes[handle].value = values[handle];
-        });
+        const $range = $('.b-range__slider');
+        if ($range.length) {
+			noUiSlider.create($range[0], {
+				start: [40, 60],
+				connect: [false, true, false],
+				step: 1,
+				range: {
+					min: 0,
+					max: 100
+				},
+				cssPrefix: 'b-range-',
+				format: wNumb({decimals: false})
+			}).on('update', (values, handle) => {
+				const $input = $range.siblings('.b-range__result').find('.js-range-field');
+				$input[handle].value = values[handle];
+				$input[handle].setAttribute('data-range', handle);
+			});
+		}
 
     })
     .on('click', '.b-input-number__btn', e => {
@@ -50,10 +52,10 @@ $(document)
         const $field = $(e.target).closest('.js-field');
         isActive($field);
     })
-    .on('change keyup', '.b-range__input input', e => {
-		const $target = $(e.target).closest('.b-range__input input');
-		console.log($target);
-		$('.b-range__slider')[0].noUiSlider.setHandle($target.index(), $target.val());
+    .on('change keyup', '.js-range-field', e => {
+		const $target = $(e.target).closest('.js-range-field');
+		const slider = $target.parents('.b-range__result').siblings('.b-range__slider')[0];
+		slider.noUiSlider.setHandle($target.attr('data-range'), $target.val());
     });
 
 const isActive = $field => {
