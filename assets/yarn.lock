@@ -3329,6 +3329,11 @@ ini@^1.3.4, ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
 
+inputmask@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/inputmask/-/inputmask-4.0.4.tgz#a1941b8165e0b1835155d142f873a94b422fbf8d"
+  integrity sha512-m2LAFzQ2IHZbC0FYGP8MO+uVvMGJdTPq07uSzB+v5QF5MOm2h22cAXKxQ4HiOYh3wHwlny9ATuJSp9WPKzq0cg==
+
 interpret@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"

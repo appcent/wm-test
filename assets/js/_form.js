@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Inputmask from "inputmask/dist/inputmask/inputmask.numeric.extensions";
 
 $(document)
     .ready(() => {
@@ -9,6 +10,9 @@ $(document)
                 isActive($(this));
             });
         }
+
+        const im = new Inputmask('+7(999)999-99-99');
+        im.mask($('[type="tel"]')[0]);
 
     })
     .on('click', '.b-input-number__btn', e => {
@@ -24,7 +28,6 @@ $(document)
 		isActive($input);
     })
     .on('input', '.js-field', e => {
-        console.log('event field');
         const $field = $(e.target).closest('.js-field');
         isActive($field);
     });
