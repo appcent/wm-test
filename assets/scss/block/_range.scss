@@ -1,0 +1,293 @@
+.b-range {
+  &__result {
+
+  }
+  &__input {
+
+  }
+}
+/* noUiSlider */
+.b-range-target,
+.b-range-target * {
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+.b-range-target {
+  position: relative;
+  direction: ltr;
+}
+.b-range-base,
+.b-range-connects {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+/* Wrapper for all connect elements.
+ */
+.b-range-connects {
+  overflow: hidden;
+  z-index: 0;
+}
+.b-range-connect,
+.b-range-origin {
+  will-change: transform;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+/* Offset direction
+ */
+html:not([dir="rtl"]) .b-range-horizontal .b-range-origin {
+  left: auto;
+  right: 0;
+}
+/* Give origins 0 height/width so they don't interfere with clicking the
+ * connect elements.
+ */
+.b-range-vertical .b-range-origin {
+  width: 0;
+}
+.b-range-horizontal .b-range-origin {
+  height: 0;
+}
+.b-range-handle {
+  position: absolute;
+}
+.b-range-state-tap .b-range-connect,
+.b-range-state-tap .b-range-origin {
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
+}
+.b-range-state-drag * {
+  cursor: inherit !important;
+}
+/* Slider size and handle placement;
+ */
+.b-range-horizontal {
+  height: 4px;
+}
+.b-range-horizontal .b-range-handle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  left: -17px;
+  top: -4px;
+}
+.b-range-vertical {
+  width: 18px;
+}
+.b-range-vertical .b-range-handle {
+  width: 28px;
+  height: 34px;
+  left: -6px;
+  top: -4px;
+}
+html:not([dir="rtl"]) .b-range-horizontal .b-range-handle {
+  right: -6px; // width/2
+  left: auto;
+}
+/* Styling;
+ * Giving the connect element a border radius causes issues with using transform: scale
+ */
+.b-range-target {
+  background: #FAFAFA;
+  //border-radius: 2px;
+  //border: 1px solid #D3D3D3;
+  //box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;
+}
+.b-range-connects {
+  //border-radius: 3px;
+  background-color: flexy-color(gray2);
+}
+.b-range-connect {
+  background: flexy-color(black);
+  &:nth-child(2) {
+    background-color: flexy-color(gray2);
+  }
+}
+/* Handles and cursors;
+ */
+.b-range-draggable {
+  cursor: ew-resize;
+}
+.b-range-vertical .b-range-draggable {
+  cursor: ns-resize;
+}
+.b-range-handle {
+  //border: 1px solid #D9D9D9;
+  //border-radius: 3px;
+  background: flexy-color(code);
+  cursor: pointer;
+  //box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
+}
+.b-range-active {
+  //box-shadow: inset 0 0 1px #FFF, inset 0 1px 7px #DDD, 0 3px 6px -3px #BBB;
+}
+/* Handle stripes;
+
+.b-range-handle:before,
+.b-range-handle:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 14px;
+  width: 1px;
+  background: #E8E7E6;
+  left: 14px;
+  top: 6px;
+}
+.b-range-handle:after {
+  left: 17px;
+}
+.b-range-vertical .b-range-handle:before,
+.b-range-vertical .b-range-handle:after {
+  width: 14px;
+  height: 1px;
+  left: 6px;
+  top: 14px;
+}
+.b-range-vertical .b-range-handle:after {
+  top: 17px;
+} */
+/* Disabled state;
+ */
+[disabled] .b-range-connect {
+  background: #B8B8B8;
+}
+[disabled].b-range-target,
+[disabled].b-range-handle,
+[disabled] .b-range-handle {
+  cursor: not-allowed;
+}
+/* Base;
+ *
+ */
+.b-range-pips,
+.b-range-pips * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.b-range-pips {
+  position: absolute;
+  color: #999;
+}
+/* Values;
+ *
+ */
+.b-range-value {
+  position: absolute;
+  white-space: nowrap;
+  text-align: center;
+}
+.b-range-value-sub {
+  color: #ccc;
+  font-size: 10px;
+}
+/* Markings;
+ *
+ */
+.b-range-marker {
+  position: absolute;
+  background: #CCC;
+}
+.b-range-marker-sub {
+  background: #AAA;
+}
+.b-range-marker-large {
+  background: #AAA;
+}
+/* Horizontal layout;
+ *
+ */
+.b-range-pips-horizontal {
+  padding: 10px 0;
+  height: 80px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+.b-range-value-horizontal {
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+}
+.b-range-rtl .b-range-value-horizontal {
+  -webkit-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+}
+.b-range-marker-horizontal.b-range-marker {
+  margin-left: -1px;
+  width: 2px;
+  height: 5px;
+}
+.b-range-marker-horizontal.b-range-marker-sub {
+  height: 10px;
+}
+.b-range-marker-horizontal.b-range-marker-large {
+  height: 15px;
+}
+/* Vertical layout;
+ *
+ */
+.b-range-pips-vertical {
+  padding: 0 10px;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+.b-range-value-vertical {
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%, 0);
+  padding-left: 25px;
+}
+.b-range-rtl .b-range-value-vertical {
+  -webkit-transform: translate(0, 50%);
+  transform: translate(0, 50%);
+}
+.b-range-marker-vertical.b-range-marker {
+  width: 5px;
+  height: 2px;
+  margin-top: -1px;
+}
+.b-range-marker-vertical.b-range-marker-sub {
+  width: 10px;
+}
+.b-range-marker-vertical.b-range-marker-large {
+  width: 15px;
+}
+.b-range-tooltip {
+  display: block;
+  position: absolute;
+  border: 1px solid #D9D9D9;
+  border-radius: 3px;
+  background: #fff;
+  color: #000;
+  padding: 5px;
+  text-align: center;
+  white-space: nowrap;
+}
+.b-range-horizontal .b-range-tooltip {
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  left: 50%;
+  bottom: 120%;
+}
+.b-range-vertical .b-range-tooltip {
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 120%;
+}

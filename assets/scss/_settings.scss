@@ -17,6 +17,7 @@ $flexy-colors: map-merge(
           black: #333333,
           gray: #b3b3b3,
           gray1: #ecede8,
+          gray2: #f3f3f3,
           yellow: #f8ed5e,
           code: #e83e8c,
           success: #39d227,
@@ -45,7 +46,7 @@ $flexy-breakpoints: (
 $flexy-font: 'Roboto', $flexy-default-font;
 
 $flexy-grid-columns: 12 !default;
-$flexy-grid-gutter: 1.25rem !default;
+$flexy-grid-gutter: 10px !default;
 
 $flexy-grid-wrapper-max-width: 1024px !default;
 $flexy-grid-wrapper-min-width: auto !default;

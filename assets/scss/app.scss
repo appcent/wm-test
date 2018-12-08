@@ -23,11 +23,7 @@
 @import 'mixin/adaptive-font';
 
 /* BLOCKS */
-
-//slider
 @import 'block/slider';
-
-
 @import 'block/info';
 @import 'block/content';
 @import 'block/map';
@@ -38,3 +34,4 @@
 @import 'block/header';
 @import 'block/select';
 @import 'mixin/order';
+@import 'block/range';
