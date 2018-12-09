@@ -1,7 +1,14 @@
 import $ from 'jquery';
+/* Mask */
 import Inputmask from "inputmask/dist/inputmask/inputmask.numeric.extensions";
+/* Range */
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
+/* Date */
+import '../node_modules/jquery-ui/ui/core';
+import '../node_modules/jquery-ui/ui/effect';
+import '../node_modules/jquery-ui/ui/widgets/datepicker';
+import '../node_modules/jquery-ui/ui/i18n/datepicker-ru';
 
 $(document)
     .ready(() => {
@@ -40,6 +47,12 @@ $(document)
 				});
 			});
 		}
+		/* Date */
+		$('.js-datepicker').datepicker({
+			dateFormat: "dd-mm-yy",
+			changeMonth: true,
+			changeYear: true
+		});
 
     })
 	/* Number */
@@ -56,16 +69,14 @@ $(document)
 		isActive($input);
     })
 	/* Active */
-    .on('input', '.js-field', e => {
-        const $field = $(e.target).closest('.js-field');
-        isActive($field);
-    })
+    .on('input change', '.js-field', e => isActive($(e.target).closest('.js-field')))
 	/* Range */
     .on('change keyup', '.js-range-field', e => {
 		const $target = $(e.target).closest('.js-range-field');
 		const slider = $target.parents('.b-range__result').siblings('.b-range__slider')[0];
 		slider.noUiSlider.setHandle($target.attr('data-range'), $target.val());
     })
+	/* File */
 	.on('change', '.b-file__field', e => {
 		const $target = $(e.target).closest('.b-file__field');
 		const $name = $target.siblings('.b-file__name');

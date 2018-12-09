@@ -235,6 +235,24 @@ $tHeight: 100px;
   }
 }
 
+.b-input-date {
+  & .b-input {
+    &__field, &__label {
+      padding-right: $iHeight;
+    }
+  }
+  &__icon {
+    cursor: pointer;
+    position: absolute;
+    height: $iHeight;
+    width: $iHeight;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 @keyframes arrowHoverDown {
   0% {opacity: 1; transform: translateY(0px) scale(1);}
   25%{opacity: 0; transform:translateY(10px) scale(0.9);}
