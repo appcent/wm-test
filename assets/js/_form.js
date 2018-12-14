@@ -5,10 +5,7 @@ import Inputmask from "inputmask/dist/inputmask/inputmask.numeric.extensions";
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
 /* Date */
-import '../node_modules/jquery-ui/ui/core';
-import '../node_modules/jquery-ui/ui/effect';
-import '../node_modules/jquery-ui/ui/widgets/datepicker';
-import '../node_modules/jquery-ui/ui/i18n/datepicker-ru';
+import datepicker from './vendor/js-datepicker';
 
 $(document)
     .ready(() => {
@@ -21,9 +18,14 @@ $(document)
         }
 		/* Mask */
 		const $phone = $('[type="tel"]');
+		const $date = $('.js-datepicker');
 		if ($phone.length) {
 			const im = new Inputmask('+7(999)999-99-99');
 			$phone.each((index, elem) => im.mask(elem));
+		}
+		if ($date.length) {
+			const im = new Inputmask('99.99.9999');
+			$date.each((index, elem) => im.mask(elem));
 		}
 		/* Range */
         const $range = $('.b-range__slider');
@@ -48,10 +50,17 @@ $(document)
 			});
 		}
 		/* Date */
-		$('.js-datepicker').datepicker({
-			dateFormat: "dd-mm-yy",
-			changeMonth: true,
-			changeYear: true
+		const picker = datepicker('.js-datepicker', {
+			position: 'bl',
+			customDays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+			customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+			overlayButton: 'Выбрать',
+			overlayPlaceholder: 'Введите год',
+			formatter: (input, date, instance) => {
+				const value = date.toLocaleDateString();
+				input.value = value
+			},
+			onSelect: (instance, date) => isActive($(instance.parent).children('.js-datepicker'))
 		});
 
     })
