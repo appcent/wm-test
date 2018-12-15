@@ -197,15 +197,26 @@ $tHeight: 100px;
   & .b-input {
     &__field {
       padding-right: $iHeight;
+      &::-webkit-search-cancel-button{
+        -webkit-appearance: none;
+      }
     }
   }
-  &__btn {
+  &__btn, &__cl-btn {
     position: absolute;
     top: 0;
     line-height: $iHeight;
     width: $iHeight;
     right: 0;
     color: $iColor;
+  }
+  &__cl-btn {
+    right: $iHeight;
+    display: none;
+    text-align: center;
+    &.is-active {
+      display: block;
+    }
   }
 }
 

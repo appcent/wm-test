@@ -62,6 +62,11 @@ $(document)
 			},
 			onSelect: (instance, date) => isActive($(instance.parent).children('.js-datepicker'))
 		});
+		/* Search */
+		const $search = $('.b-input-search');
+		if ($search.length) {
+			$search.append('<a class="b-input-search__cl-btn" href="#"><i class="fas fa-times-circle"></i></a>');
+		}
 
     })
 	/* Number */
@@ -80,7 +85,7 @@ $(document)
 	/* Active */
     .on('input change', '.js-field', e => isActive($(e.target).closest('.js-field')))
 	/* Range */
-    .on('change keyup', '.js-range-field', e => {
+    .on('change keyup wheel', '.js-range-field', e => {
 		const $target = $(e.target).closest('.js-range-field');
 		const slider = $target.parents('.b-range__result').siblings('.b-range__slider')[0];
 		slider.noUiSlider.setHandle($target.attr('data-range'), $target.val());
@@ -95,6 +100,23 @@ $(document)
 		} else {
 			$name.text('');
 			$name.removeClass('is-active');
+		}
+	})
+	/* Search */
+	.on('click', '.b-input-search__cl-btn', e => {
+		e.preventDefault();
+		const $field =$(e.target).closest('.b-input-search__cl-btn').siblings('.b-input__field');
+		$field.val('');
+		$(e.target).closest('.b-input-search__cl-btn').removeClass('is-active');
+		isActive($field);
+	})
+	.on('input change', '.b-input-search .b-input__field', e => {
+		const $field = $(e.target).closest('.b-input__field'),
+			  $btn = $field.siblings('.b-input-search__cl-btn');
+		if ($field.val()) {
+			if(!$btn.hasClass('is-active')) $btn.addClass('is-active')
+		} else {
+			$btn.removeClass('is-active');
 		}
 	});
 /* Active */
