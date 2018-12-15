@@ -31,12 +31,13 @@
       + .b-custom-select__list {
         display: block;
         height: auto;
+        animation: fadeInTop .4s ease-out;
       }
     }
   }
   &__list {
-    display: none;
-    height: 0;
+    //display: none;
+    //height: 0;
     overflow: hidden;
     position: absolute;
     top: 100%;
@@ -44,9 +45,11 @@
     width: 100%;
     background-color: #fff;
     box-shadow: 0 13px 41px -20px rgba(0,0,0,.75);
+    animation: fadeOut .2s;
+    animation-fill-mode: forwards;
   }
   &__item {
-    border-bottom: 1px solid #fff;
+    //border-bottom: 1px solid #fff;
     padding: .5rem .9rem;
     transition: .2s ease-in-out;
     cursor: pointer;
