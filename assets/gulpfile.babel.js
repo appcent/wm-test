@@ -12,7 +12,7 @@ browserSync.create();
 const paths = {
 	build: '../public/assets/',
 	from: {
-		css: './scss/**/*{.css,.scss,.sass}',
+		css: './scss/app.scss',
 		tpl: '../templates/**/!(base|_*){.njk,.nunjucks}',
 		files: [
 			'./images/**/*{.jpg,.png,.svg,.jpeg}',
