@@ -10,9 +10,12 @@ import gulpif from 'gulp-if';
 browserSync.create();
 
 const paths = {
-	build: '../public/assets/',
+	build: [
+		'../public/assets/',
+		'../public/**/*.html'
+	],
 	from: {
-		css: './scss/app.scss',
+		css: './scss/**/*.scss',
 		tpl: '../templates/**/!(base|_*){.njk,.nunjucks}',
 		files: [
 			'./images/**/*{.jpg,.png,.svg,.jpeg}',

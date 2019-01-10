@@ -1,0 +1,14 @@
+.b-bg {
+  background: {
+    position: center;
+    size: cover;
+    repeat: no-repeat;
+  };
+  // собственные модификаторы исходя из дизайна
+  &-crx {
+    background: {
+      size: contain;
+      repeat: repeat-x;
+    };
+  }
+}
