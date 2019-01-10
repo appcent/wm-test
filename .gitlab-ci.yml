@@ -1,0 +1,11 @@
+image: node:8
+
+pages:
+  stage: deploy
+  script:
+  - cd assets && yarn install && yarn gulp files && yarn build
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

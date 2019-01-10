@@ -52,7 +52,7 @@ export const sync = () => {
 	browserSync.init({
 		server: {
 			baseDir: '../public',
-			index: 'home.html'
+			index: 'index.html'
 		},
 		open: false
 	});
