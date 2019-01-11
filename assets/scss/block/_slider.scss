@@ -1,11 +1,15 @@
 .b-slider {
   position: relative;
-  @extend .owl-carousel;
-  @extend .owl-theme;
+  &__slider {
+    @extend .owl-carousel;
+    @extend .owl-theme;
+  }
+  &__thumbs {
+    display: flex;
+    justify-content: center;
+  }
 }
-.b-slider-wrapper {
-  position: relative;
-}
+/* Стрелки */
 .b-slider-arrow {
   position: absolute;
   top: 0;
@@ -16,8 +20,8 @@
   text-decoration: none;
   width: 40px;
   z-index: 2;
-  font-size: 1.25rem;
-  background-color: rgba(0,0,0,0.2);
+  font-size: flexy-size(large);
+  color: flexy-color(white);
   &__next {
     right: 0;
   }
@@ -25,31 +29,52 @@
     left: 0;
   }
 }
+/* Точки */
 .b-slider-dots {
   position: absolute;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  @extend .owl-dots;
+  z-index: 2;
+  & .owl-dot {
+    margin: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid flexy-color(white);
+    transition: .2s ease;
+    &.active {
+      background-color: flexy-color(white);
+    }
+  }
 }
+/* Таймлайн */
 .b-slider-count {
   margin-right: 6.625rem; //106
   position: absolute;
-  &__num {
-    display: block;
-    width: 60px;
-    color: flexy-color(green);
-    cursor: pointer;
-    line-height: 1rem;
-    margin-bottom: 0.875rem; //14
-  }
+  left: 0;
+  top: 100%;
+  width: 100%;
   &__line {
     display: block;
     height: 5px;
-    background-color: #52513e;
-    &-width {
+    & span {
+      position: absolute;
+      left: 0;
+      top: 0;
       height: 100%;
       width: 0;
       background-color: flexy-color(yellow);
     }
+  }
+}
+/* Навигация */
+.b-slider-thumb {
+  margin: 10px;
+  cursor: pointer;
+  opacity: .7;
+  transition: .2s ease;
+  &.active {
+    opacity: 1;
   }
 }

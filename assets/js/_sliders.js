@@ -1,85 +1,86 @@
 import $ from 'jquery';
 import 'owl.carousel';
+import 'owl.carousel2.thumbs';
 
 $(document)
 	.ready(() =>{
 
-		const $slider = $('.b-slider');
-
+		const $slider = $('.js-slider');
+		const $navSlider = $('.js-nav-slider');
+		const $timelineSlider = $('.js-timeline-slider');
+		/* Default */
 		if($slider.length) {
 			$slider.owlCarousel({
 				items: 1,
 				loop: true,
-				dotsClass: 'b-slider-dots',
+				dotsContainer: '.b-slider-dots',
 				margin: 15,
-				smartSpeed: $('.b-slider').attr('data-speed'),
-				onInitialized: addCount,
-				autoplay: $('.b-slider').attr('data-delay'),
-				onChanged: startCount
+				autoHeight: true,
+				smartSpeed: $slider.attr('data-speed'),
+				autoplay: $slider.attr('data-delay')
 			});
 		}
-
+		/* Nav */
+		if($navSlider.length) {
+			$navSlider.owlCarousel({
+				items: 1,
+				dots: false,
+				margin: 15,
+				autoHeight: true,
+				smartSpeed: $navSlider.attr('data-speed'),
+				autoplay: $navSlider.attr('data-delay'),
+				thumbs: true,
+				thumbsPrerendered: true
+			});
+		}
+		/* Timeline */
+		if($timelineSlider.length) {
+			$timelineSlider.owlCarousel({
+				items: 1,
+				dots: false,
+				margin: 15,
+				autoHeight: true,
+				smartSpeed: $timelineSlider.attr('data-speed'),
+				autoplay: $timelineSlider.attr('data-delay'),
+				onInitialized: changeCount,
+				onChanged: changeCount,
+				loop: false,
+				rewind: true,
+			});
+		}
 	})
+	/* Arrow */
 	.on('click', '.b-slider-arrow', e => {
 		e.preventDefault();
 
 		let $target = $(e.target).closest('.b-slider-arrow'),
-			owlSelector = $target.attr('data-slider');
+			owlSelector = $target.attr('data-slider'),
+			delay = $(owlSelector).attr('data-delay'),
+			speed = $(owlSelector).attr('data-speed');
 
 		if ($target.hasClass('b-slider-arrow__next')) {
-			$(owlSelector).trigger('next.owl.carousel', [700]);
+			$(owlSelector).trigger('next.owl.carousel', [speed]);
 		} else if ($target.hasClass('b-slider-arrow__prev')) {
-			$(owlSelector).trigger('prev.owl.carousel', [700]);
+			$(owlSelector).trigger('prev.owl.carousel', [speed]);
 		}
-	})
-	.on('click', '.b-slider-count__num', e => {
-		e.preventDefault();
 
-		let $target = $(e.target).closest('.b-slider-count__num'),
-			countIndex = $target.parent().index(),
-			speed = $('.b-slider').attr('data-speed');
-		//console.log(countIndex);
-		$('.b-slider').trigger('to.owl.carousel', [countIndex, speed]);
+		$(owlSelector).trigger('stop.owl.autoplay');
+		$(owlSelector).trigger('play.owl.autoplay', [delay, speed]);
+
 	});
+/* Timeline */
+const changeCount = e => {
+	const $line = $(e.currentTarget).siblings('.b-slider-count').find('.b-slider-count__line span');
 
-const addCount = (e) => {
+	$line
+		.stop()
+		.css({ width: 0 });
 
-	for (let i=1; i<=e.item.count; i++) {
-		$('.b-slider-count').append(`<div class="b-slider-count__item">
-                                        <a href='#' class="b-slider-count__num">${((i/100).toFixed(2)+'').split(".")[1]}</a>
-                                        <div class="b-slider-count__line">
-                                            <div class="b-slider-count__line-width"></div>
-                                        </div>
-                                    </div>`);
-	}
-
-	startCount(e);
-
-	//console.log(e)
-
-};
-const startCount = (e) => {
-
-	let delay = $('.b-slider').attr('data-delay'),
-		speed = $('.b-slider').attr('data-speed'),
-		currentSlideIndex = e.item.index - (e.relatedTarget.clones().length / 2),
-		currentCountItem = $('.b-slider-count__item')[currentSlideIndex];
-
-	//console.log(e.relatedTarget.current());
-
-	$('.b-slider-count__line-width').stop().css({width:0});
-	$('.b-slider-count__item').removeClass('is-active');
-
-	//restart autoplay
-	$('.b-slider').trigger('stop.owl.autoplay');
-	$('.b-slider').trigger('play.owl.autoplay', [delay, speed]);
-
-	$(currentCountItem).find('.b-slider-count__line-width').animate(
-		{width:'100%'},
+	$line.animate(
+		{ width: '100%' },
 		{
-			duration: +delay,
-			easing: 'linear'
-		});
-	$(currentCountItem).addClass('is-active');
-
+			duration: +e.currentTarget.dataset.delay,
+			easing: 'linear',
+		}
+	);
 };

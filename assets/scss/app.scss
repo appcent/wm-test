@@ -26,11 +26,7 @@
 
 /* BLOCKS */
 //base
-@import 'block/base/content';
-@import 'block/base/font';
-@import 'block/base/background';
-@import 'block/base/headers';
-
+@import 'block/content';
 @import 'block/slider';
 @import 'block/info';
 @import 'block/map';
@@ -42,6 +38,5 @@
 @import 'block/select';
 @import 'mixin/order';
 @import 'block/range';
-@import 'block/material';
 @import 'block/error';
 @import 'block/flashes';

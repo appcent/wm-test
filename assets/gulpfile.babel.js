@@ -72,7 +72,7 @@ export const clean = cb => {
 
 export const files = () => {
 	return gulp.src(paths.from.files, { base: './' })
-		.pipe(gulp.dest(paths.build))
+		.pipe(gulp.dest(paths.build[0]))
 };
 
 export const uploads = () => {

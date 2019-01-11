@@ -122,5 +122,5 @@ $(document)
 /* Active */
 const isActive = $field => {
     const $input = $field.parent('.b-form__elem');
-    $field.val().length && !$field.hasClass('is-active') ? $input.addClass('is-active') : $input.removeClass('is-active');
+    $field.val().length ? $input.addClass('is-active') : $input.removeClass('is-active');
 };
