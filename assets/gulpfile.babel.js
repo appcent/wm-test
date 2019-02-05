@@ -33,11 +33,11 @@ const paths = {
 export const css = () => {
 	return gulp.src(paths.from.css)
 		.pipe(gulpif(process.env.NODE_ENV === 'development', sourcemaps.init()))
-			.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-			.pipe(autoprefixer({
-				cascade: false,
-				grid: true
-			}))
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(autoprefixer({
+			cascade: false,
+			grid: true
+		}))
 		.pipe(gulpif(process.env.NODE_ENV === 'development', sourcemaps.write()))
 		.pipe(gulp.dest(paths.to.css))
 };

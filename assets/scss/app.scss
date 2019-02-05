@@ -21,11 +21,13 @@
 
 @import 'font/roboto';
 
-@import 'global';
 @import 'mixin/adaptive-font';
+@import 'mixin/orders';
+@import 'mixin/spaces';
+
+@import 'global';
 
 /* BLOCKS */
-//base
 @import 'block/content';
 @import 'block/slider';
 @import 'block/info';
@@ -36,7 +38,6 @@
 @import 'block/btn';
 @import 'block/header';
 @import 'block/select';
-@import 'mixin/order';
 @import 'block/range';
 @import 'block/error';
 @import 'block/flashes';
