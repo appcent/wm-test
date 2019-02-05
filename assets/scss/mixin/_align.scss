@@ -1,0 +1,5 @@
+@each $align in (center,left,right,justify) {
+  .b-ta_#{$align} {
+    text-align: $align;
+  }
+}

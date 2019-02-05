@@ -1,0 +1,5 @@
+@each $size in (100,200,300,400,500,600,700,800,900) {
+  .b-fw_#{$size} {
+    font-weight: $size;
+  }
+}
