@@ -1,0 +1,17 @@
+.b-svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.b-svg {
+  @each $key, $val in $svgIcons {
+
+    &_#{$key} {
+      font-size: (nth($val, 1)/16)*1rem; //rem = px/base
+      width: (nth($val, 2)/nth($val, 1))*1em;
+    }
+
+  }
+}

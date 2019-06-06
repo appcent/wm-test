@@ -2,14 +2,11 @@
 @import '../node_modules/flexy-framework/src/defaults';
 @import 'settings';
 @import '../node_modules/flexy-framework/src/flexy';
-@import './vendor/block-grid';
 //font-awesome
 @import '../node_modules/@fortawesome/fontawesome-free/scss/brands';
 @import '../node_modules/@fortawesome/fontawesome-free/scss/regular';
 @import '../node_modules/@fortawesome/fontawesome-free/scss/solid';
 @import '../node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
-//iziModal
-@import 'vendor/iziModal';
 //owlCarousel
 @import '../node_modules/owl.carousel/src/scss/owl.carousel';
 @import '../node_modules/owl.carousel/src/scss/owl.theme.default';
@@ -17,30 +14,32 @@
 @import 'vendor/humburger/hamburger';
 @import 'vendor/humburger/ham-spin';
 //datepicker
-@import 'vendor/js-datepicker';
+@import '../node_modules/@chenfengyuan/datepicker/src/css/datepicker.scss';
+//sprite
+@import 'sprite/png/variables';
+@import 'sprite/png/mixins';
+@import 'sprite/svg/variables';
+@import 'sprite/svg/mixins';
+@import 'sprite/svg/fill/variables';
+@import 'sprite/svg/fill/mixins';
 
 @import 'font/roboto';
 
+@import 'mixin/pxtorem';
 @import 'mixin/adaptive-font';
-@import 'mixin/orders';
-@import 'mixin/spaces';
-@import 'mixin/weight';
-@import 'mixin/align';
-@import 'mixin/colors';
+@import 'mixin/helpers';
 
 @import 'global';
 
 /* BLOCKS */
 @import 'block/content';
 @import 'block/slider';
-@import 'block/info';
 @import 'block/map';
 @import 'block/form';
 @import 'block/tabs';
 @import 'block/modal';
 @import 'block/btn';
-@import 'block/header';
+@import 'block/nav';
 @import 'block/select';
 @import 'block/range';
-@import 'block/error';
 @import 'block/flashes';

@@ -1,5 +1,0 @@
-@each $name, $size in $flexy-sizes {
-  .b-space_#{$name} {
-    height: $size;
-  }
-}

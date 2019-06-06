@@ -1,0 +1,8 @@
+/**
+ * rem(24px) */
+@function rem($size) {
+  @return $size / $root-font-size * 1rem;
+}
+html {
+  font-size: ($root-font-size / 16px) * 100%;
+}

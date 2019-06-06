@@ -1,20 +1,11 @@
 .b-content {
-  &-title {
+  &__title {
     text-transform: uppercase;
     font-weight: 700;
-    &--center {
-      text-align: center;
-    }
-    &--right {
-      text-align: right;
-    }
-    &--justify {
-      text-align: justify;
-    }
   }
-  &-desc {
-    & p {
-      margin-bottom: 10px;
+  &__desc {
+    & p, & ul {
+      margin-bottom: rem(10px);
     }
     & ul, & ol {}
     & ul {}

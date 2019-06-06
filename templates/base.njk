@@ -7,32 +7,22 @@
     <link rel="stylesheet" href="assets/css/app.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
-<body class="{{ page }}">
+<body>
 
-<div id="b-transparent"></div>
+{# ---> include header here #}
 
-{% include 'parts/_header.njk' %}
+<main class="b-content">
+    {% block content %}{% endblock content %}
+</main>
 
-<div class="b-wrapper">
-    {% if breadcrumbs | length > 0 %}
-    <div class="b-breadcrumb min-height-ie-fix">
-        {% for link in breadcrumbs %}
-        <div class="b-breadcrumb__item">
-            <a href="{{ link.url }}.html" class="b-breadcrumb__link">{{ link.name }}</a>
-        </div>
-        <div class="b-breadcrumb__symbol"><i class="fas fa-chevron-right"></i></div>
-        {% endfor %}
-        <div class="b-breadcrumb__item">{{ pageName }}</div>
-    </div>
-    {% endif %}
+{# ---> include footer here #}
+
+<div class="b-hide_xsmall_up">
+
+    {# ---> include modals here #}
+
 </div>
 
-{% block content %}
-
-{% endblock content %}
-
-{% include 'parts/_modal.njk' %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/css-element-queries/1.0.2/ResizeSensor.min.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

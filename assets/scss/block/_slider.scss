@@ -8,28 +8,22 @@
     display: flex;
     justify-content: center;
   }
-}
-/* Стрелки */
-.b-slider-arrow {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  width: 40px;
-  z-index: 2;
-  font-size: flexy-size(large);
-  color: flexy-color(white);
-  &__next {
-    right: 0;
-  }
-  &__prev {
-    left: 0;
+  &__arrow {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    &_prev {
+      left: 0;
+    }
+    &_next {
+      right: 0;
+    }
   }
 }
-/* Точки */
 .b-slider-dots {
   position: absolute;
   bottom: 0;
@@ -48,7 +42,6 @@
     }
   }
 }
-/* Таймлайн */
 .b-slider-count {
   margin-right: 6.625rem; //106
   position: absolute;
@@ -68,7 +61,6 @@
     }
   }
 }
-/* Навигация */
 .b-slider-thumb {
   margin: 10px;
   cursor: pointer;

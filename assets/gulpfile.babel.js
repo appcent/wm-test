@@ -6,6 +6,10 @@ import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import del from 'del';
 import gulpif from 'gulp-if';
+import svgSprite from 'gulp-svg-sprite';
+import cheerio from 'gulp-cheerio';
+import replace from 'gulp-replace';
+import spritesmith from 'gulp.spritesmith';
 
 browserSync.create();
 
@@ -18,10 +22,15 @@ const paths = {
 		css: './scss/**/*.scss',
 		tpl: '../templates/**/!(base|_*){.njk,.nunjucks}',
 		files: [
-			'./images/**/*{.jpg,.png,.svg,.jpeg}',
-			'./fonts/**/*{.eot,.otf,.woff,.woff2,.ttf,.svg}'
+			'./images/**/*',
+			'!./images/sprite{/**,}',
+			'./fonts/**/*'
 		],
-		uploads: './uploads/**/*{.jpg,.png,.svg,.jpeg,.pdf,.xls,.docx}'
+		sprite: [
+			'./images/sprite/**/*.svg',
+			'./images/sprite/**/*.png'
+		],
+		uploads: './uploads/**/*'
 	},
 	to: {
 		css: '../public/assets/css',
@@ -62,12 +71,74 @@ export const sync = () => {
 export const watch = () => {
 	gulp.watch(paths.from.css, gulp.series(css));
 	gulp.watch('../templates/**/*.njk', gulp.series(tpl));
+	gulp.watch(paths.from.sprite, gulp.series(sprite));
 	gulp.watch(paths.from.files, gulp.series(files));
 	gulp.watch(paths.from.uploads, gulp.series(uploads));
 };
 
 export const clean = cb => {
 	return del(paths.build, { force: true })
+};
+
+export const sprite = () => {
+	// svg with fill
+	let svgFill = gulp.src('./images/sprite/fill/*.svg')
+		.pipe(svgSprite({
+			mode: {
+				symbol: {
+					dest : '.',
+					sprite: 'images/sprite-fill.svg',
+					render: {
+						scss: {
+							dest: 'scss/sprite/svg/fill/_variables.scss',
+							template: 'scss/sprite/svg/fill/template.mustache'
+						}
+					}
+				}
+			}
+		}))
+		.pipe(gulp.dest('./'));
+	// clean svg
+	let svg = gulp.src(['./images/sprite/**/*.svg','!./images/sprite/fill{/**,}'])
+		.pipe(cheerio({
+			run: function ($) {
+				$('[fill]').removeAttr('fill');
+				$('[fill-opacity]').removeAttr('fill-opacity');
+				$('[style]').removeAttr('style');
+			},
+			parserOptions: { xmlMode: true }
+		}))
+		.pipe(replace('&gt;', '>')) // У cheerio есть один баг — иногда он преобразовывает символ '>' в кодировку '&gt;'.
+		.pipe(svgSprite({
+			mode: {
+				symbol: {
+					dest : '.',
+					sprite: 'images/sprite.svg',
+					render: {
+						scss: {
+							dest: 'scss/sprite/svg/_variables.scss',
+							template: 'scss/sprite/svg/template.mustache'
+						}
+					}
+				}
+			}
+		}))
+		.pipe(gulp.dest('./'));
+	//png
+	let png = gulp.src('./images/sprite/**/*.png')
+		.pipe(spritesmith({
+			imgName: 'sprite.png',
+			cssName: '_variables.scss',
+			cssFormat: 'scss',
+			algorithm: 'binary-tree',
+			cssTemplate: 'scss/sprite/png/template.mustache',
+		}));
+
+	png.img.pipe(gulp.dest('./images/'));
+	png.css.pipe(gulp.dest('./scss/sprite/png/'));
+
+	return svg, svgFill, png;
+
 };
 
 export const files = () => {
@@ -80,8 +151,8 @@ export const uploads = () => {
 		.pipe(gulp.dest(paths.to.uploads))
 };
 
-export const dev = gulp.series(gulp.parallel(css, tpl, files, uploads), gulp.parallel(watch, sync));
+export const dev = gulp.series(gulp.parallel(css, tpl, sprite, files, uploads), gulp.parallel(watch, sync));
 
-export const prod = gulp.series(gulp.parallel(css, tpl, files, uploads));
+export const prod = gulp.series(gulp.parallel(css, tpl, sprite, files, uploads));
 
 export default dev;

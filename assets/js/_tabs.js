@@ -1,48 +1,66 @@
 import $ from 'jquery';
+import { getSiblings } from "./_functions";
 
 $(document)
     .ready(() => {
 
-        const $activeTab = $('.b-tabs__active-tab');
+        const tabs = document.querySelectorAll('.b-tabs__btn.is-active');
 
-        if ($activeTab.length) {
-           setActiveTab($activeTab);
-        }
+        if ( tabs.length ) [].forEach.call(tabs, tab => changeInnerLegend(tab));
 
     })
-    .on('click', '.b-tabs__tab', e => {
-        e.preventDefault();
+    .on('click', '.b-tabs__btn', e => {
 
-        const $this = $(e.target).closest('.b-tabs__tab');
-        const $parent = $(e.target).closest('.b-tabs');
-        const $activeTab = $this.parent().siblings('.b-tabs__active-tab');
-        const $content = $($this.attr('data-tab'));
+        const target = e.currentTarget;
 
-        $this.siblings('.b-tabs__tab').removeClass('is-active');
-        $content.siblings('.b-tabs__content').removeClass('is-active');
+		changeActiveStatus(target);
+		changeActiveStatus(document.getElementById(JSON.parse(target.getAttribute('data-tab')).id));
+		changeInnerLegend(target);
 
-        $this.addClass('is-active');
-        $content.addClass('is-active');
+		if ( !window.matchMedia('(min-width: 768px)').matches )
+			target.closest('.b-tabs').querySelector('.b-tabs__legend').click();
 
-        if ($parent[0].hasAttribute('data-tab-mobile')) {
-            setActiveTab($activeTab);
-            $activeTab.trigger('click');
-        }
     })
-    .on('click', '.b-tabs__active-tab', e => {
-        e.preventDefault();
+    .on('click', '.b-tabs__legend', e => {
 
-        const $this = $(e.target).closest('.b-tabs__active-tab');
+		const target = e.currentTarget;
 
-        if ($this.hasClass('is-active')) {
-            $this.removeClass('is-active');
-        } else {
-            $this.addClass('is-active');
-        }
-    });
+		if (target.matches('.is-active') ) {
 
-const setActiveTab = ($activeTab) => {
-    $activeTab.each(function () {
-        $(this).text($(this).siblings('.b-tabs__links').find('.is-active').text())
-    });
+			target.classList.remove('is-active');
+
+		} else {
+
+			[].forEach.call(document.querySelectorAll('.b-tabs__legend'), legend => legend.classList.remove('is-active'));
+			target.classList.add('is-active');
+
+		}
+
+	})
+	.on('click', e => {
+
+		const legends = document.querySelectorAll('.b-tabs__legend');
+
+		if ( e.target.closest('.b-tabs__legend') || e.target.closest('.b-tabs__nav') ) return e;
+
+		[].forEach.call(legends, legend => legend.classList.remove('is-active'));
+
+	});
+
+const changeActiveStatus = target => {
+
+	[].forEach.call(getSiblings(target), elem => elem.classList.remove('is-active'));
+	target.classList.add('is-active');
+
 };
+
+const changeInnerLegend = tab => {
+
+	tab.closest('.b-tabs').querySelector('.b-tabs__legend')
+		.innerHTML = JSON.parse(tab.getAttribute('data-tab')).title;
+
+};
+
+
+
+

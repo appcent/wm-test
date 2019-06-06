@@ -1,4 +1,3 @@
-/* Заголовки */
 h1,.h1 {
   font-size: flexy-size(xxlarge);
 }
@@ -17,26 +16,16 @@ h5,.h5 {
 h6,.h6 {
   font-size: flexy-size(xsmall);
 }
-/* Изображения */
+
 img {
   max-height: 100%;
   max-width: 100%;
 }
-/* Главная страница */
-.b-main-page {
-  & .b-breadcrumb {
-    display: none;
-  }
-}
-/* Отключить прокрутку */
-.b-hidden {
-  overflow: hidden;
-}
-/* Ссылки, конпки, сабмиты */
+
 a, button, input[type="submit"] {
   cursor: pointer;
 }
-/* Фон */
+
 .b-bg {
   background: {
     position: center;
@@ -44,9 +33,13 @@ a, button, input[type="submit"] {
     repeat: no-repeat;
   };
 }
-/* Горезонтальная линия */
-hr {
-  background: flexy-color(gray);
-  border: 0;
-  height: 1px;
+
+.b-space {
+  height: 40px;
+  &_small {
+    height: 20px;
+  }
+  &_medium {
+    height: 30px;
+  }
 }

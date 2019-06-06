@@ -1,234 +1,191 @@
-/* Variables */
-//elem
-$eMargin: 20px 0;
-//Input
-$iHeight: 50px;
-$iPadding: 16px;
-$iBorderWidth: 1px;
-$iBorder: $iBorderWidth solid #ddd;
-$iBorderRadius: 0;
-$iBackgroundColor: flexy-color(white);
-$iFontSize: 16px;
-$iColor: flexy-color(black);
-$iLabelColor: #999;
-//Radio, checkbox
-$rSize: 16px;
-$rBorder: $iBorder;
-$rPadding: 10px;
-$rFontSize: $iFontSize;
-$rColor: flexy-color(green);
-//Textarea
-$tPadding: $iPadding;
-$tHeight: 100px;
-
-/* Form Styles */
 .b-form {
-  * {
-    box-sizing: border-box;
-  }
-  &__title {
-    // @extend .b-content__title;
-  }
-  &__desc {
-   // @extend .b-content__desc;
-  }
   &__elem {
-    margin: $eMargin;
-  }
-}
-
-.b-input, .b-textarea {
-  position: relative;
-  padding: 0;
-  box-shadow: none;
-  border: 0;
-  border-radius: 0;
-  &:hover:not(:focus) {
-    box-shadow: none;
-  }
-  &__field {
-    width: 100%;
-    min-height: $iHeight;
-    padding: 0 $iPadding;
-    border: $iBorder;
-    border-radius: $iBorderRadius;
-    background-color: $iBackgroundColor;
-    font-size: $iFontSize;
-    color: $iColor;
-  }
-  &.is-active label,
-  &__field:focus ~ label {
-    color: $iLabelColor;
-    font-size: $iFontSize - 4;
-    font-weight: 300;
-    line-height: $iFontSize;
-  }
-  &__label {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    transition: all .15s;
-    cursor: text;
-    font-size: $iFontSize;
-    font-weight: 300;
-    line-height: $iHeight;
-    color: $iColor;
-    padding: 0 $iPadding;
-  }
-}
-
-.b-checkbox, .b-radio {
-  position: relative;
-  &__field {
-    opacity: 0;
-    position: absolute;
-    &:checked {
-      ~ .b-checkbox__label .b-checkbox__custom,
-      ~ .b-radio__label .b-radio__custom {
-        &:before {
-          opacity: 1;
-        }
-      }
-    }
-  }
-  &__label {
-    position: relative;
-    line-height: $rFontSize;
-    font-size: $rFontSize;
-    padding-left: $rPadding + $rSize;
-    padding-right: 0;
     display: block;
+    position: relative;
+    margin: rem(15px) 0;
   }
-  &__custom {
+}
+.b-input, .b-textarea, .b-number, .b-search, .b-date {
+  cursor: text;
+  &__field, &__label {
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 50px;
+    border: 1px solid transparent;
+    font: {
+      size: 1rem;
+      weight: 300;
+    };
+  }
+  &__field {
+    border: {
+      radius: 4px;
+      color: flexy-color();
+    };
+  }
+  &__label {
     position: absolute;
-    top: 0;
     left: 0;
-    width: $rSize;
-    height: $rSize;
-    border: $rBorder;
-    transition: all .15s;
-    &:before {
-      content: '\f00c';
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      font-size: $rFontSize/2;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity .15s ease-in-out;
-      color: $rColor;
-    }
+    top: 0;
+    transition: .15s ease-out;
+  }
+  &.is-focus .b-input__label,
+  &.is-focus .b-textarea__label,
+  &.is-focus .b-number__label,
+  &.is-focus .b-search__label,
+  &.is-focus .b-date__label,
+  & .b-input__field:focus ~ .b-input__label,
+  & .b-textarea__field:focus ~ .b-textarea__label,
+  & .b-number__field:focus ~ .b-number__label,
+  & .b-search__field:focus ~ .b-search__label,
+  & .b-date__field:focus ~ .b-date__label {
+    line-height: 1rem;
+    font-size: .65rem;
+    color: flexy-color(dark_vanilla);
   }
 }
-
-.b-radio {
-  &__custom {
-    border-radius: 50%;
-    &:before {
-      content: '';
-      width: 70%;
-      height: 70%;
-      border-radius: 50%;
-      background-color: $rColor;
-    }
-  }
-}
-
 .b-textarea {
   &__field {
+    line-height: normal;
+    padding: 15px;
     resize: none;
-    padding: $tPadding;
-    height: $tHeight;
+    min-height: 100px;
+  }
+  &__label {
+    line-height: 50px;
   }
 }
-
-.b-input-number {
-  & .b-input {
-    &__field {
-      -webkit-appearance: textfield;
-      -moz-appearance: textfield;
-      appearance: textfield;
-      padding-right: 24px;
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-      }
-    }
-    &__label {
-      padding-right: 24px;
+.b-number {
+  &__field, &__label {
+    padding-right: 40px;
+  }
+  &__field {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
     }
   }
   &__controls {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
   }
   &__btn {
+    height: 50%;
     display: block;
-    text-decoration: none;
-    width: 24px;
+    width: 25px;
     text-align: center;
-    overflow: hidden;
-    z-index: 10;
-    color: $iColor;
-    & * {
-      line-height: 24px;
+    line-height: 25px;
+    transition: .15s ease;
+    &:hover {
+      background-color: flexy-color(dark_pink);
+      color: flexy-color(isabelline);
     }
-  }
-  &__up:hover {
-    // animation: name duration timing-function delay iteration-count direction;
-    animation: arrowHoverUp .6s ease-in-out .2s 1;
-  }
-  &__down:hover {
-    animation: arrowHoverDown .6s ease-in-out .2s 1;
   }
 }
-
-.b-input-search {
-  & input[type='search'] {
-    box-sizing: border-box;
+.b-search {
+  &__field, &__label {
+    padding-right: 75px;
   }
-  & .b-input {
-    &__field {
-      padding-right: $iHeight;
-      &::-webkit-search-cancel-button{
-        -webkit-appearance: none;
-      }
+  &__field {
+    &::-webkit-search-cancel-button{
+      -webkit-appearance: none;
     }
   }
-  &__btn, &__cl-btn {
+  &__controls {
     position: absolute;
-    top: 0;
-    line-height: $iHeight;
-    width: $iHeight;
-    right: 0;
-    color: $iColor;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
   }
-  &__cl-btn {
-    right: $iHeight;
-    display: none;
+  &__btn {
+    line-height: 50px;
+    color: flexy-color();
+    width: 30px;
     text-align: center;
-    &.is-active {
-      display: block;
+    transition: .25s ease-out;
+    &_clear {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  &.is-focus .b-search__btn_clear {
+    visibility: visible;
+    animation: clearOn .25s ease-out forwards;
+  }
+}
+.b-checkbox, .b-radio {
+  &__field {
+    opacity: 0;
+    position: absolute;
+    &:checked ~ .b-checkbox__custom:before,
+    &:checked ~ .b-radio__custom:before {
+      animation: checkOn .25s ease-out forwards;
+    }
+  }
+  &__label {
+    padding-left: 40px;
+  }
+  &__custom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border: {
+      color: flexy-color();
+      style: solid;
+      width: 1px;
+      radius: 4px;
+    };
+    &:before { //check
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 6px;
+      width: 6px;
+      height: 9px;
+      border: {
+        style: solid;
+        color: flexy-color();
+        width: 0 2px 2px 0;
+      };
+      transform: rotate(45deg);
+      opacity: 0;
+      transition: .25s ease-out;
     }
   }
 }
-
+.b-radio {
+  &__custom {
+    border-radius: 50%;
+    &:before { //check
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      left: 6px;
+      top: 6px;
+      border: 0;
+      background-color: flexy-color();
+    }
+  }
+}
 .b-file {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   &__name {
     color: flexy-color(black);
     transition: .2s ease-in-out;
-    &.is-active {
-      padding-right: 15px;
-    }
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
   }
   &__field {
     opacity: 0;
@@ -244,35 +201,48 @@ $tHeight: 100px;
     border: 1px solid flexy-color(code);
     color: flexy-color(code);
   }
-}
-
-.b-input-date {
-  & .b-input {
-    &__field, &__label {
-      padding-right: $iHeight;
+  &__clear {
+    padding-left: 15px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  &.is-focus {
+    & .b-file__name {
+      padding-right: 15px;
+      opacity: 1;
+      width: auto;
+    }
+    & .b-file__clear {
+      visibility: visible;
+      animation: clearOn .25s ease-out forwards;
     }
   }
-  &__icon {
-    cursor: pointer;
-    position: absolute;
-    height: $iHeight;
-    width: $iHeight;
-    right: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+@keyframes checkOn {
+  0% {
+    transform: rotate(45deg) scale(.8);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(45deg) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+    opacity: 1;
   }
 }
-@keyframes arrowHoverDown {
-  0% {opacity: 1; transform: translateY(0px) scale(1);}
-  25%{opacity: 0; transform:translateY(10px) scale(0.9);}
-  26%{opacity: 0; transform:translateY(-10px) scale(0.9);}
-  55% {opacity: 1; transform: translateY(0px) scale(1);}
-}
-@keyframes arrowHoverUp {
-  0% {opacity: 1; transform: translateY(0px) scale(1);}
-  25%{opacity: 0; transform:translateY(-10px) scale(0.9);}
-  26%{opacity: 0; transform:translateY(10px) scale(0.9);}
-  55% {opacity: 1; transform: translateY(0px) scale(1);}
+@keyframes clearOn {
+  0% {
+    transform: scale(.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

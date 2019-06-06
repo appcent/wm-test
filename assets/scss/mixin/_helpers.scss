@@ -1,0 +1,41 @@
+/**
+* text-align */
+@each $align in (center,left,right,justify) {
+  .b-ta_#{$align} {
+    text-align: $align;
+  }
+}
+/**
+* font-weight */
+@each $align in (100,200,300,400,500,600,700,800,900) {
+  .b-fw_#{$align} {
+    font-weight: $align;
+  }
+}
+/**
+* text-transform */
+@each $transform in (uppercase, lowercase, none) {
+  .b-ttrans_#{$transform} {
+    text-transform: $transform;
+  }
+}
+/**
+* color */
+@each $name, $color in $flexy-colors {
+  .b-color_#{$name} {
+    color: $color;
+  }
+}
+/**
+* order */
+@each $name, $size in $flexy-breakpoints {
+  @media (min-width: $size) {
+    .b-order_#{$name} {
+      @for $n from 0 through $flexy-grid-columns {
+        &_#{$n} {
+          order: $n;
+        }
+      }
+    }
+  }
+}

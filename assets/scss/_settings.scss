@@ -1,31 +1,18 @@
-/*
- Настройки Flexy-Framework
-   - цвета - [ m-color_opacity1 || flexy-color(opacity1) ]
-   - размеры - [ m-size m-size_xxlarge || _xxlarge || flexy-size(xxlarge) ]
-   - хлебные крошки - [ @include flexy-breakpoint(medium) {} ]
-   - шрифт по умолчанию
-   - сетка
-   - обертка
-*/
-
+/**
+ * @include flexy-color(colorName) */
 $flexy-colors: map-merge(
   $flexy-default-colors,
   (
-          default: #666666,
-          white: #fff,
-          green: #00462b,
-          black: #333333,
-          gray: #b3b3b3,
-          gray1: #ecede8,
-          gray2: #f3f3f3,
-          yellow: #f8ed5e,
-          code: #e83e8c,
-          success: #27d27b,
-          error: #d65849
+          default: #2C363F,
+          dark_pink: #E75A7C,
+          isabelline: #F2F5EA,
+          timberwolf: #D6DBD2,
+          dark_vanilla: #BBC7A4,
 
   )
 );
-
+/**
+ * @include flexy-size(sizeName) */
 $flexy-sizes: (
         xxlarge: 2.5rem,
         xlarge: 2rem,
@@ -34,35 +21,35 @@ $flexy-sizes: (
         small: 1.25rem,
         xsmall: 1rem,
 );
-
+/**
+ * @include flexy-breakpoint(breakpointName) */
 $flexy-breakpoints: (
-        small: 0,
-        medium: 769px,
+        xsmall:0,
+        small: 568px,
+        medium: 768px,
         large: 992px,
-        xlarge: 1200px,
+        xlarge: 1248px,
         xxlarge: 1600px
 ) !default;
 
 $flexy-font: 'Roboto', $flexy-default-font;
 
 $flexy-grid-columns: 12 !default;
-$flexy-grid-gutter: 10px !default;
+$flexy-grid-gutter: 12px !default;
 
-$flexy-grid-wrapper-max-width: 1024px !default;
+$flexy-grid-wrapper-max-width: 1248px !default;
 $flexy-grid-wrapper-min-width: auto !default;
 
+/**
+ * set base font size */
+$root-font-size: 16px;
 
-/* Настройки FontAwesome */
-
+/**
+ * path to FontAwesome fonts */
 $fa-font-path: '../fonts/FontAwesome' !default;
 
-/*
-  Настройки темы Owl Carousel
-    - цвета
-    - стрелки
-    - точки
-*/
-
+/**
+ * Owl Carousel */
 $color-base:			#869791 !default;
 $color-white:			#FFF !default;
 $color-gray:			#D6D6D6 !default;
@@ -84,14 +71,8 @@ $dot-margin: 			5px 7px !default;
 $dot-background:		$color-gray !default;
 $dot-background-active:	$color-base !default;
 
-
-/*
- Настройки Hamburger
-    - оформление
-    - фильтр при наведении
-    - шаблон
-*/
-
+/**
+ * Hamburger */
 $hamburger-padding-x                       : 15px !default;
 $hamburger-padding-y                       : 15px !default;
 $hamburger-layer-width                     : 40px !default;

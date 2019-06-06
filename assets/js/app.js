@@ -1,28 +1,15 @@
 import $ from 'jquery';
-import './vendor/iziModal';
 import './_tabs';
 import './_form';
 import './_select';
 import './_sliders';
+import './_polyfills';
 
 $(document)
     .ready(() => {
 
-        ymaps.ready(mapInit);
+        //ymaps.ready(mapInit);
 
-        $('.b-modal').iziModal({
-            width: 820,
-            overlayColor: 'rgba(0, 0, 0, 0.4)',
-            padding: 15
-        });
-
-    })
-    .on('click', '.b-header-nav__burger', e => {
-        $(e.target).closest('.b-header-nav__burger').toggleClass('is-active');
-
-        $('.b-header-mob-nav').toggleClass('is-open');
-
-        $('body').toggleClass('b-body-hidden');
     });
 
 //ymap

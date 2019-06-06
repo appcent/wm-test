@@ -1,38 +1,40 @@
 import $ from 'jquery';
-/* Mask */
-import Inputmask from "inputmask/dist/inputmask/inputmask.numeric.extensions";
+import '../node_modules/jquery.maskedinput/src/jquery.maskedinput';
+import '../node_modules/@chenfengyuan/datepicker/dist/datepicker.esm';
+import '../node_modules/@chenfengyuan/datepicker/i18n/datepicker.ru-RU';
 /* Range */
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
-/* Date */
-import datepicker from './vendor/js-datepicker';
 
 $(document)
     .ready(() => {
-		/* Active */
-        const $field = $('.js-field');
-        if ($field.length) {
-            $field.each(function () {
-                isActive($(this));
-            });
-        }
-		/* Mask */
+
+        const fields = document.querySelectorAll('.js-focusing');
+        const ranges = document.querySelectorAll('.b-range__slider');
 		const $phone = $('[type="tel"]');
-		const $date = $('.js-datepicker');
-		if ($phone.length) {
-			const im = new Inputmask('+7(999)999-99-99');
-			$phone.each((index, elem) => im.mask(elem));
-		}
+		const $date = $('.js-date');
+
+		/* Active */
+        if (fields.length) for (let i=0; i<fields.length; i++) moveLabel(fields[i]);
+		/* Mask */
+		if ($phone.length) $phone.mask('+7(999)999-99-99');
+
 		if ($date.length) {
-			const im = new Inputmask('99.99.9999');
-			$date.each((index, elem) => im.mask(elem));
+
+			$date.datepicker({
+				language: 'ru-RU',
+				autoHide: true
+			});
+			$date.mask('99.99.9999');
+
 		}
 		/* Range */
-        const $range = $('.b-range__slider');
-        if ($range.length) {
-			$range.each(function (index, elem) {
-				let $this = $(this);
-				noUiSlider.create(elem, {
+        if (ranges.length) {
+
+        	for (let i=0; i<ranges.length; i++) {
+
+				noUiSlider.create(ranges[i], {
+
 					start: [40, 60],
 					connect: [false, true, false],
 					step: 1,
@@ -42,85 +44,63 @@ $(document)
 					},
 					cssPrefix: 'b-range-',
 					format: wNumb({decimals: false})
+
 				}).on('update', (values, handle) => {
-					const $input = $this.siblings('.b-range__result').find('.js-range-field');
-					$input[handle].value = values[handle];
-					$input[handle].setAttribute('data-range', handle);
+					const result = document.getElementById(ranges[i].getAttribute('data-id-input'));
+					const inputs = result.getElementsByClassName('b-number__field');
+
+					inputs[handle].value = values[handle];
+					inputs[handle].setAttribute('data-range', handle);
 				});
-			});
-		}
-		/* Date */
-		const picker = datepicker('.js-datepicker', {
-			position: 'bl',
-			customDays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
-			customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-			overlayButton: 'Выбрать',
-			overlayPlaceholder: 'Введите год',
-			formatter: (input, date, instance) => {
-				const value = date.toLocaleDateString();
-				input.value = value
-			},
-			onSelect: (instance, date) => isActive($(instance.parent).children('.js-datepicker'))
-		});
-		/* Search */
-		const $search = $('.b-input-search');
-		if ($search.length) {
-			$search.append('<a class="b-input-search__cl-btn" href="#"><i class="fas fa-times-circle"></i></a>');
+
+			}
 		}
 
     })
 	/* Number */
-    .on('click', '.b-input-number__btn', e => {
+    .on('click', '.b-number__btn', e => {
        e.preventDefault();
-       const $btn = $(e.target).closest('.b-input-number__btn'),
-           $input = $('#' + $btn.attr('data-id-number')),
-           number = $input[0];
-       if ($btn.hasClass('b-input-number__up')) {
-           number.stepUp();
-       } else if (number.value > 0) {
-           number.stepDown();
-       }
-		isActive($input);
+
+       const btn = e.currentTarget;
+       const input = document.getElementById(btn.getAttribute('data-id-number'));
+
+       if ( btn.matches('.b-number__btn_up') ) input.stepUp();
+       else if ( input.value > 0 ) input.stepDown();
+
+       if ( input.value ) moveLabel(input);
     })
 	/* Active */
-    .on('input change', '.js-field', e => isActive($(e.target).closest('.js-field')))
+    .on('input change', '.js-focusing', e => moveLabel(e.currentTarget))
 	/* Range */
-    .on('change keyup wheel', '.js-range-field', e => {
+    .on('change keyup wheel', '.b-range__field', e => {
 		const $target = $(e.target).closest('.js-range-field');
 		const slider = $target.parents('.b-range__result').siblings('.b-range__slider')[0];
 		slider.noUiSlider.setHandle($target.attr('data-range'), $target.val());
     })
 	/* File */
 	.on('change', '.b-file__field', e => {
-		const $target = $(e.target).closest('.b-file__field');
-		const $name = $target.siblings('.b-file__name');
-		if ($target.val()) {
-			$name.text($target.val().split('\\').pop());
-			$name.addClass('is-active');
-		} else {
-			$name.text('');
-			$name.removeClass('is-active');
-		}
+
+		const input = e.currentTarget;
+		const name = document.querySelectorAll(`[data-id-input="${input.getAttribute('id')}"]`)[0];
+
+		name.innerHTML = input.value.split('\\').pop();
 	})
 	/* Search */
-	.on('click', '.b-input-search__cl-btn', e => {
+	.on('click', '.js-clear', e => {
 		e.preventDefault();
-		const $field =$(e.target).closest('.b-input-search__cl-btn').siblings('.b-input__field');
-		$field.val('');
-		$(e.target).closest('.b-input-search__cl-btn').removeClass('is-active');
-		isActive($field);
-	})
-	.on('input change', '.b-input-search .b-input__field', e => {
-		const $field = $(e.target).closest('.b-input__field'),
-			  $btn = $field.siblings('.b-input-search__cl-btn');
-		if ($field.val()) {
-			if(!$btn.hasClass('is-active')) $btn.addClass('is-active')
-		} else {
-			$btn.removeClass('is-active');
-		}
+
+		const btn = e.currentTarget;
+		const input = document.getElementById(btn.getAttribute('data-id-input'));
+
+		input.value = '';
+
+		moveLabel(input);
 	});
 /* Active */
-const isActive = $field => {
-    const $input = $field.parent('.b-form__elem');
-    $field.val().length ? $input.addClass('is-active') : $input.removeClass('is-active');
+const moveLabel = field => {
+
+    const elem = field.parentElement;
+
+    field.value ? elem.classList.add('is-focus') : elem.classList.remove('is-focus');
+
 };

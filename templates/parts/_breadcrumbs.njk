@@ -1,0 +1,13 @@
+<div class="b-wrapper">
+    {% if breadcrumbs | length > 0 %}
+        <div class="b-breadcrumb">
+            {% for link in breadcrumbs %}
+                <div class="b-breadcrumb__item">
+                    <a href="{{ link.url }}.html" class="b-breadcrumb__link">{{ link.name }}</a>
+                </div>
+                <div class="b-breadcrumb__symbol">/</div>
+            {% endfor %}
+            <div class="b-breadcrumb__item">{{ pageName }}</div>
+        </div>
+    {% endif %}
+</div>
