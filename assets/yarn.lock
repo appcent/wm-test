@@ -635,6 +635,11 @@
   resolved "https://registry.yarnpkg.com/@chenfengyuan/datepicker/-/datepicker-1.0.7.tgz#fe697600b5fc2190a49386c53b363e04c3a8044d"
   integrity sha512-Prcb9R0MVUgUXHPTsZzjF+YIxhrMCqsF0mmItlwy61KIBG+PIMwSNV9Zg9eyP4dyOdd33EDPbmC4KPwYYF7vEw==
 
+"@fancyapps/fancybox@^3.5.7":
+  version "3.5.7"
+  resolved "https://registry.yarnpkg.com/@fancyapps/fancybox/-/fancybox-3.5.7.tgz#12f8734663ec6eae7f9236b92ca236e6e07fdfd5"
+  integrity sha512-rcEtu8t+WnmqIDV/Wfm1yvy/nDdwc7YV25j9HLxGC2/WOsUhk9rcWg2nB8g1BrjRt9zaoADdjHTU6ILYTJzBBg==
+
 "@fortawesome/fontawesome-free@^5.3.1":
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.9.0.tgz#1aa5c59efb1b8c6eb6277d1e3e8c8f31998b8c8e"
