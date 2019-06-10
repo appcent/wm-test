@@ -12,8 +12,8 @@ $(document)
 			$slider.owlCarousel({
 				items: 1,
 				loop: true,
-				dots: false,
-				margin: 15,
+				dots: true,
+				margin: 0,
 				autoHeight: true,
 				smartSpeed: 450,
 			});
