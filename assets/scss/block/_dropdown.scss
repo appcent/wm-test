@@ -1,0 +1,25 @@
+.b-dropdown {
+  position: relative;
+  &__menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 10px;
+    display: none;
+    &.is-active {
+      display: block;
+      animation: openDropdown .3s ease-out;
+    }
+  }
+}
+
+@keyframes openDropdown {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

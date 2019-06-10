@@ -6,6 +6,7 @@ import './_sliders';
 import './_polyfills';
 import './_map';
 import './_modal';
+import './_dropdown';
 
 $(document)
     .ready(() => {
