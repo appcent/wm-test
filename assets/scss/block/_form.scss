@@ -2,44 +2,75 @@
   &__elem {
     display: block;
     position: relative;
-    margin: rem(15px) 0;
+    margin: 0 0 rem(25px);
   }
 }
-.b-input, .b-textarea, .b-number, .b-search, .b-date {
+.b-input, .b-textarea {
   cursor: text;
   &__field, &__label {
     display: block;
     width: 100%;
-    padding: 0 15px;
-    line-height: 50px;
+    padding: 0 rem(12px);
+    line-height: 58px;
     border: 1px solid transparent;
+    text-align: center;
     font: {
-      size: 1rem;
-      weight: 300;
+      size: flexy-size(large);
     };
   }
   &__field {
     border: {
-      radius: 4px;
-      color: flexy-color();
+      radius: 5px;
+      color: flexy-color(gray);
     };
+    text-overflow: ellipsis;
+    &::-moz-placeholder {
+      color: flexy-color(gray2);
+      font: {
+        size: flexy-size(large);
+        weight: 400;
+      }
+    }
+    &::-webkit-input-placeholder {
+      color: flexy-color(gray2);
+      font: {
+        size: flexy-size(large);
+        weight: 400;
+      }
+    }
+    &:-ms-input-placeholder {
+      color: flexy-color(gray2);
+      font: {
+        size: flexy-size(large);
+        weight: 400;
+      }
+    }
+    &::-ms-input-placeholder {
+      color: flexy-color(gray2);
+      font: {
+        size: flexy-size(large);
+        weight: 400;
+      }
+    }
+    &::placeholder {
+      color: flexy-color(gray2);
+      font: {
+        size: flexy-size(large);
+        weight: 400;
+      }
+    }
   }
   &__label {
     position: absolute;
     left: 0;
     top: 0;
     transition: .15s ease-out;
+    color: flexy-color(gray2);
   }
   &.is-focus .b-input__label,
   &.is-focus .b-textarea__label,
-  &.is-focus .b-number__label,
-  &.is-focus .b-search__label,
-  &.is-focus .b-date__label,
   & .b-input__field:focus ~ .b-input__label,
-  & .b-textarea__field:focus ~ .b-textarea__label,
-  & .b-number__field:focus ~ .b-number__label,
-  & .b-search__field:focus ~ .b-search__label,
-  & .b-date__field:focus ~ .b-date__label {
+  & .b-textarea__field:focus ~ .b-textarea__label {
     line-height: 1rem;
     font-size: .65rem;
     color: flexy-color(dark_vanilla);
@@ -48,113 +79,48 @@
 .b-textarea {
   &__field {
     line-height: normal;
-    padding: 15px;
+    padding: rem(20px);
     resize: none;
-    min-height: 100px;
+    min-height: 181px;
   }
   &__label {
     line-height: 50px;
   }
 }
-.b-number {
-  &__field, &__label {
-    padding-right: 40px;
-  }
-  &__field {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-    }
-  }
-  &__controls {
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-    border-radius: 0 4px 4px 0;
-    overflow: hidden;
-  }
-  &__btn {
-    height: 50%;
-    display: block;
-    width: 25px;
-    text-align: center;
-    line-height: 25px;
-    transition: .15s ease;
-    &:hover {
-      background-color: flexy-color(dark_pink);
-      color: flexy-color(isabelline);
-    }
-  }
-}
-.b-search {
-  &__field, &__label {
-    padding-right: 75px;
-  }
-  &__field {
-    &::-webkit-search-cancel-button{
-      -webkit-appearance: none;
-    }
-  }
-  &__controls {
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-  }
-  &__btn {
-    line-height: 50px;
-    color: flexy-color();
-    width: 30px;
-    text-align: center;
-    transition: .25s ease-out;
-    &_clear {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-  &.is-focus .b-search__btn_clear {
-    visibility: visible;
-    animation: clearOn .25s ease-out forwards;
-  }
-}
-.b-checkbox, .b-radio {
+
+.b-checkbox {
   &__field {
     opacity: 0;
     position: absolute;
-    &:checked ~ .b-checkbox__custom:before,
-    &:checked ~ .b-radio__custom:before {
+    &:checked ~ .b-checkbox__custom:before {
       animation: checkOn .25s ease-out forwards;
     }
   }
   &__label {
-    padding-left: 40px;
+    padding-left: rem(33px);
   }
   &__custom {
     position: absolute;
     left: 0;
     top: 0;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border: {
-      color: flexy-color();
+      color: flexy-color(blue);
       style: solid;
       width: 1px;
-      radius: 4px;
+      radius: 3px;
     };
     &:before { //check
       content: '';
       position: absolute;
-      left: 10px;
-      top: 6px;
+      left: rem(5px);
+      top: rem(2px);
       width: 6px;
       height: 9px;
       border: {
         style: solid;
-        color: flexy-color();
+        color: flexy-color(blue);
         width: 0 2px 2px 0;
       };
       transform: rotate(45deg);
@@ -163,61 +129,7 @@
     }
   }
 }
-.b-radio {
-  &__custom {
-    border-radius: 50%;
-    &:before { //check
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      left: 6px;
-      top: 6px;
-      border: 0;
-      background-color: flexy-color();
-    }
-  }
-}
-.b-file {
-  display: inline-flex;
-  align-items: center;
-  &__name {
-    color: flexy-color(black);
-    transition: .2s ease-in-out;
-    overflow: hidden;
-    width: 0;
-    opacity: 0;
-  }
-  &__field {
-    opacity: 0;
-    width: .1px;
-    height: .1px;
-  }
-  &__label {
-    line-height: 34px;
-    height: 50px;
-    border-radius: 4px;
-    text-align: center;
-    padding: .5rem .9rem;
-    border: 1px solid flexy-color(code);
-    color: flexy-color(code);
-  }
-  &__clear {
-    padding-left: 15px;
-    opacity: 0;
-    visibility: hidden;
-  }
-  &.is-focus {
-    & .b-file__name {
-      padding-right: 15px;
-      opacity: 1;
-      width: auto;
-    }
-    & .b-file__clear {
-      visibility: visible;
-      animation: clearOn .25s ease-out forwards;
-    }
-  }
-}
+
 @keyframes checkOn {
   0% {
     transform: rotate(45deg) scale(.8);
@@ -229,20 +141,6 @@
   }
   100% {
     transform: rotate(45deg) scale(1);
-    opacity: 1;
-  }
-}
-@keyframes clearOn {
-  0% {
-    transform: scale(.8);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
     opacity: 1;
   }
 }

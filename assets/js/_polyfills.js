@@ -1,7 +1,3 @@
-/**
- * svg:use support to IE9+ */
-import '../node_modules/svgxuse/svgxuse';
-
 (function() {
 
 	/**

@@ -1,0 +1,13 @@
+.b-hero {
+  position: relative;
+  padding-top: rem(200px);
+  &__title {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: rem(-27px);
+    text-align: center;
+    font-weight: 100;
+    line-height: 1;
+  }
+}

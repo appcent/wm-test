@@ -1,6 +1,16 @@
 .b-btn {
   display: inline-block;
-  text-transform: uppercase;
   text-decoration: none;
-  padding: .5rem;
+  padding: rem(15px) rem(30px);
+  line-height: 1;
+  transition: .15s;
+  font-weight: 300;
+  &_blue {
+    color: flexy-color(white);
+    background-color: flexy-color(blue);
+    border-radius: 10px;
+  }
+  &:hover {
+    opacity: .7;
+  }
 }

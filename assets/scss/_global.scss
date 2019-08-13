@@ -40,10 +40,17 @@ body {
 
 .b-space {
   height: 40px;
-  &_small {
+  &_xs {
+    height: 10px;
+  }
+  &_sm {
     height: 20px;
   }
-  &_medium {
+  &_md {
     height: 30px;
   }
+}
+
+.b-wrapper {
+  box-sizing: content-box;
 }

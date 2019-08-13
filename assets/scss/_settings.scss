@@ -3,25 +3,26 @@
 $flexy-colors: map-merge(
   $flexy-default-colors,
   (
-          default: #2C363F,
+          default: #1c1c1c,
           black: #000,
           white: #fff,
-          dark_pink: #E75A7C,
-          isabelline: #F2F5EA,
-          timberwolf: #D6DBD2,
-          dark_vanilla: #BBC7A4,
-
+          blue: #435993,
+          gray: #e5e5e5,
+          gray2: #c8c8c8,
+          gray3: #e8e8e8,
+          gray4: #b4b4b4,
+          brown: #2e211c
   )
 );
 /**
  * @include flexy-size(sizeName) */
 $flexy-sizes: (
-        xxlarge: 2.5rem,
-        xlarge: 2rem,
-        large: 1.75rem,
-        medium: 1.5rem,
-        small: 1.25rem,
-        xsmall: 1rem,
+        xxlarge: 4.375rem,
+        xlarge: 1.875rem,
+        large: 1.5rem,
+        medium: 1.25rem,
+        small: .875rem,
+        xsmall: .8125rem,
 );
 /**
  * @include flexy-breakpoint(breakpointName) */
@@ -39,7 +40,7 @@ $flexy-font: 'Roboto', $flexy-default-font;
 $flexy-grid-columns: 12 !default;
 $flexy-grid-gutter: 12px !default;
 
-$flexy-grid-wrapper-max-width: 1248px !default;
+$flexy-grid-wrapper-max-width: 768px !default;
 $flexy-grid-wrapper-min-width: auto !default;
 
 /**
@@ -47,42 +48,15 @@ $flexy-grid-wrapper-min-width: auto !default;
 $root-font-size: 16px;
 
 /**
- * path to FontAwesome fonts */
-$fa-font-path: '../fonts/FontAwesome' !default;
-
-/**
- * Owl Carousel */
-$color-base:			#869791 !default;
-$color-white:			#FFF !default;
-$color-gray:			#D6D6D6 !default;
-
-$nav-color: 			$color-white !default;
-$nav-color-hover:		$color-white !default;
-$nav-font-size: 		14px !default;
-$nav-rounded: 			3px !default;
-$nav-margin: 			5px !default;
-$nav-padding: 			4px 7px !default;
-$nav-background: 		$color-gray !default;
-$nav-background-hover:	$color-base !default;
-$nav-disabled-opacity: 	0.5 !default;
-
-$dot-width:				10px !default;
-$dot-height:			10px !default;
-$dot-rounded:			30px !default;
-$dot-margin: 			5px 7px !default;
-$dot-background:		$color-gray !default;
-$dot-background-active:	$color-base !default;
-
-/**
  * Hamburger */
-$hamburger-padding-x                       : 15px !default;
-$hamburger-padding-y                       : 15px !default;
-$hamburger-layer-width                     : 40px !default;
-$hamburger-layer-height                    : 4px !default;
-$hamburger-layer-spacing                   : 6px !default;
-$hamburger-layer-color                     : #000 !default;
+$hamburger-padding-x                       : 10px !default;
+$hamburger-padding-y                       : 10px !default;
+$hamburger-layer-width                     : 25px !default;
+$hamburger-layer-height                    : 2px !default;
+$hamburger-layer-spacing                   : 4px !default;
+$hamburger-layer-color                     : #435993 !default;
 $hamburger-layer-border-radius             : 4px !default;
-$hamburger-hover-opacity                   : 0.7 !default;
+$hamburger-hover-opacity                   : 1 !default;
 $hamburger-hover-transition-duration       : 0.15s !default;
 $hamburger-hover-transition-timing-function: linear !default;
 

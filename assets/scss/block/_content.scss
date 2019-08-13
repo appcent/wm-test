@@ -1,15 +1,18 @@
 .b-content {
-  &__title {
-    text-transform: uppercase;
-    font-weight: 700;
+  padding-top: rem(54px);
+  &-title {
+    text-align: center;
+    font-weight: 300;
+    & i {
+      margin: 0 auto rem(20px);
+    }
   }
   &__desc {
-    & p, & ul {
+    & p {
       margin-bottom: rem(10px);
     }
-    & ul, & ol {}
-    & ul {}
-    & ol {}
-    & a {}
+  }
+  @include flexy-breakpoint(medium) {
+    padding-top: rem(81px);
   }
 }

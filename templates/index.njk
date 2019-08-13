@@ -1,13 +1,18 @@
 {% extends 'base.njk' %}
 
-{% set pageName = 'Главная' %}
-{% set breadcrumbs = [{'name':'Главная','url':'index'}] %}
-{% set navActiveItem = 1 %}
-
-{% import 'parts/_macros.njk' as macros %}
-
 {% block content %}
 
-    {# ---> include parts / sections here #}
+    {% include 'sections/_hero.njk' %}
+
+    <form action="" class="b-form">
+        <div class="b-wrapper">
+
+            {% include 'sections/_profile.njk' %}
+            {% include 'sections/_skills.njk' %}
+            {% include 'sections/_js.njk' %}
+            {% include 'sections/_about.njk' %}
+
+        </div>
+    </form>
 
 {% endblock content %}

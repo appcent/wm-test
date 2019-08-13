@@ -1,0 +1,11 @@
+.b-profile {
+  max-width: 520px;
+  margin: 0 auto;
+  &__select {
+    max-width: 320px;
+    margin: 0 auto rem(25px);
+  }
+  & .b-form__elem:last-child {
+    margin-bottom: 0;
+  }
+}

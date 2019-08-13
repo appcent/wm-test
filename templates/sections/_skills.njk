@@ -1,0 +1,39 @@
+<section id="skills" class="b-skills">
+
+    <div class="b-space_md"></div>
+    <div class="b-space_md"></div>
+    <div class="b-space_md"></div>
+
+    <div class="b-content-title">
+        <i class="b-icon b-icon_list"></i>
+        <h2>Расскажите о своем опыте</h2>
+    </div>
+
+    <div class="b-space"></div>
+
+    <div class="b-row">
+        {% set checks = [
+
+            {'title':'БЭМ/OOCSS'},
+            {'title':'Stylus/LESS/SASS'},
+            {'title':'Работаю с SVG'},
+            {'title':'Верстаю семантично'},
+            {'title':'ES2015/ES2016'},
+            {'title':'Gulp/GRUNT'},
+            {'title':'Webpack'},
+            {'title':'jQuery'},
+            {'title':'Ипользую Git'}
+
+        ] %}
+        {% for check in checks %}
+        <div class="b-col b-col_xsmall_12 b-col_small_6 b-col_medium_4">
+            <label class="b-skills__item b-form__elem b-checkbox">
+                <input type="checkbox" class="b-checkbox__field" checked>
+                <span class="b-checkbox__custom"></span>
+                <span class="b-checkbox__label">{{ check.title }}</span>
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
