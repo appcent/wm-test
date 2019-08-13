@@ -19,11 +19,15 @@
     };
   }
   &__field {
+    height: 58px;
     border: {
       radius: 5px;
       color: flexy-color(gray);
     };
     text-overflow: ellipsis;
+    &::-ms-clear {
+      display: none;
+    }
     &::-moz-placeholder {
       color: flexy-color(gray2);
       font: {

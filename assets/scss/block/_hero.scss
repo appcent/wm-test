@@ -10,4 +10,7 @@
     font-weight: 100;
     line-height: 1;
   }
+  @include flexy-breakpoint(medium) {
+    padding-top: 15%;
+  }
 }
